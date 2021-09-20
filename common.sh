@@ -9,3 +9,11 @@ poky_dir="${common_script_dir}/poky"
 poky_build_dir="${poky_dir}/build"
 poky_build_conf_dir="${poky_build_dir}/conf"
 custom_conf_dir="${common_script_dir}/conf"
+
+toaster_url="localhost:8223"
+toaster_args="nobuild webport=${toaster_url}"
+
+function start_toaster {
+    source toaster stop ${toaster_args}
+    source toaster start ${toaster_args}
+}
