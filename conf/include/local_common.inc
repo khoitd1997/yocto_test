@@ -2,7 +2,7 @@ require build_path.inc
 
 INHERIT += "buildhistory" 
 
-MACHINE := "qemuarm64"
+MACHINE = "qemuarm64"
 
 DISTRO = "poky"
 
@@ -32,7 +32,6 @@ BB_DISKMON_DIRS = "\
 
 # Try to use functions of util modules from
 # https://github.com/openembedded/openembedded-core/blob/master/meta/lib/oe/utils.py
-# NOTE: OE_IMPORTS seems to control what get import
 BB_NUMBER_THREADS = "${@oe.utils.cpu_count() - 1}"
 PARALLEL_MAKE = "-j ${BB_NUMBER_THREADS}"
 

@@ -12,14 +12,18 @@ else
 fi
 
 cd ${poky_dir}
+rm -rf ${poky_build_dir}
 source oe-init-build-env
 
+# NOTE: bitbake sometimes timeout or do weird things
+# wipe the build directories to start at clean slate
 rm -rf ${poky_build_conf_dir}/*
 
 cp ${custom_conf_dir}/${build_config}/* ${poky_build_conf_dir}
 cp ${custom_conf_dir}/include/* ${poky_build_conf_dir}
+# cp -r ${custom_conf_dir}/classes ${poky_build_dir}
 
 # start_toaster
 
-# bitbake core-image-minimal
-bitbake core-image-sato
+bitbake core-image-minimal
+# bitbake core-image-sato
