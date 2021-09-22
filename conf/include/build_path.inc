@@ -5,10 +5,10 @@
 # for example, bblayers.conf can require a.conf
 # and local.conf won't have to require that file again
 
-# NOTE: Custom variables are prefixed with string "KD" to avoid
+# NOTE: Custom variables are prefixed with string "KSD" to avoid
 # overwriting other variables
 
-KD_REPO_ROOT_DIR = "${TOPDIR}/../.."
+KSD_REPO_ROOT_DIR = "${TOPDIR}/../.."
 
-KD_META_OPENEMBEDDED_DIR = "${KD_REPO_ROOT_DIR}/meta-openembedded"
-KD_POKY_DIR = "${TOPDIR}/.."
+KSD_META_OPENEMBEDDED_DIR = "${KSD_REPO_ROOT_DIR}/meta-openembedded"
+KSD_POKY_DIR = "${TOPDIR}/.."

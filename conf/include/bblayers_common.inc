@@ -11,9 +11,9 @@ POKY_BBLAYERS_CONF_VERSION = "2"
 BBFILES ?= ""
 
 BBLAYERS = " \
-  ${KD_POKY_DIR}/meta \
-  ${KD_POKY_DIR}/meta-poky \
-  ${KD_POKY_DIR}/meta-yocto-bsp \
+  ${KSD_POKY_DIR}/meta \
+  ${KSD_POKY_DIR}/meta-poky \
+  ${KSD_POKY_DIR}/meta-yocto-bsp \
   "
 
 BBPATH = "${TOPDIR}"

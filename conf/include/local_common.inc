@@ -34,12 +34,12 @@ BB_DISKMON_DIRS = "\
 BB_NUMBER_THREADS = "${@oe.utils.cpu_count() - 1}"
 PARALLEL_MAKE = "-j ${BB_NUMBER_THREADS}"
 
-SSTATE_DIR = "${KD_REPO_ROOT_DIR}/sstate"
+SSTATE_DIR = "${KSD_REPO_ROOT_DIR}/sstate"
 SSTATE_MIRRORS = "file://.* file://${SSTATE_DIR}/PATH"
 
-DL_DIR = "${KD_REPO_ROOT_DIR}/dl"
+DL_DIR = "${KSD_REPO_ROOT_DIR}/dl"
 BB_GENERATE_MIRROR_TARBALLS = "1"
-CACHE = "${KD_REPO_ROOT_DIR}/bitbake_cache"
+CACHE = "${KSD_REPO_ROOT_DIR}/bitbake_cache"
 
 IMAGE_FSTYPES = "ext4"
 IMAGE_FSTYPES_remove = "tar.bz2"
