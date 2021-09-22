@@ -8,7 +8,11 @@ source ${script_dir}/common.sh
 cd ${poky_dir}
 source oe-init-build-env
 
+# NOTE: for ssh, do ssh root@localhost -p 2222
+# by default, seems to forward port 22, 23 to localhost 2222, 2323
+
 CYAN='\033[0;36m'
 NC='\033[0m'
 printf "${CYAN}Use 'Ctrl+a c' to get to QEMU shell, then enter 'quit' to quit\n${NC}"
-runqemu qemuarm64 core-image-minimal ext4 nographic serial slirp
+runqemu \
+    qemuarm64 core-image-minimal ext4 nographic serial slirp
