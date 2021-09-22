@@ -10,8 +10,6 @@ PACKAGE_CLASSES ?= "package_rpm"
 
 SDKMACHINE = "x86_64"
 
-EXTRA_IMAGE_FEATURES_append = " ssh-server-openssh "
-
 USER_CLASSES_append = "buildstats image-mklibs image-prelink"
 
 PATCHRESOLVE = "noop"
@@ -20,6 +18,7 @@ PACKAGECONFIG_append_pn-qemu-system-native = " sdl"
 
 CONF_VERSION = "1"
 
+### BUILD INFRASTRUCTURE CONFIG
 BB_DISKMON_DIRS = "\
     STOPTASKS,${TMPDIR},1G,100K \
     STOPTASKS,${DL_DIR},1G,100K \
@@ -40,3 +39,9 @@ SSTATE_MIRRORS = "file://.* file://${SSTATE_DIR}/PATH"
 
 DL_DIR = "${KD_REPO_ROOT_DIR}/dl"
 BB_GENERATE_MIRROR_TARBALLS = "1"
+CACHE = "${KD_REPO_ROOT_DIR}/bitbake_cache"
+
+IMAGE_FSTYPES = "ext4"
+IMAGE_FSTYPES_remove = "tar.bz2"
+
+EXTRA_IMAGE_FEATURES_remove = "ssh-server-dropbear"

@@ -11,19 +11,19 @@ else
     build_config="${1}"
 fi
 
-cd ${poky_dir}
-rm -rf ${poky_build_dir}
-source oe-init-build-env
-
 # NOTE: bitbake sometimes timeout or do weird things
 # wipe the build directories to start at clean slate
-rm -rf ${poky_build_conf_dir}/*
+# during experimenting
+echo "REMOVING YOCTO BUILD"
+# rm -rf ${poky_build_dir}
+mkdir -p ${poky_build_conf_dir}
 
 cp ${custom_conf_dir}/${build_config}/* ${poky_build_conf_dir}
 cp ${custom_conf_dir}/include/* ${poky_build_conf_dir}
 # cp -r ${custom_conf_dir}/classes ${poky_build_dir}
 
-# start_toaster
+cd ${poky_dir}
+source oe-init-build-env
 
-bitbake core-image-minimal
+time bitbake core-image-minimal
 # bitbake core-image-sato

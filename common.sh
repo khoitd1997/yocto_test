@@ -10,6 +10,8 @@ poky_build_dir="${poky_dir}/build"
 poky_build_conf_dir="${poky_build_dir}/conf"
 custom_conf_dir="${common_script_dir}/conf"
 
+bitbake_cache_dir="${common_script_dir}/bitbake_cache"
+
 toaster_url="localhost:8223"
 toaster_args="nobuild webport=${toaster_url}"
 
