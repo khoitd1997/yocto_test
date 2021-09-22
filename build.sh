@@ -22,8 +22,7 @@ cp ${custom_conf_dir}/${build_config}/* ${poky_build_conf_dir}
 cp ${custom_conf_dir}/include/* ${poky_build_conf_dir}
 # cp -r ${custom_conf_dir}/classes ${poky_build_dir}
 
-cd ${poky_dir}
-source oe-init-build-env
+source_oe_init_script
 
 time bitbake core-image-minimal
 # bitbake core-image-sato
