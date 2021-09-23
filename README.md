@@ -8,6 +8,8 @@
 
 ## Notes
 
+All `TODO` are in the form: `TODO(kd): ...`
+
 ```shell
 # create layer
 yocto-layer create yannik
