@@ -1,6 +1,6 @@
 require build_path.inc
 
-INHERIT += "buildhistory" 
+INHERIT += "buildhistory buildstats" 
 
 MACHINE = "qemuarm64"
 
