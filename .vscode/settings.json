@@ -5,6 +5,7 @@
         "**/node_modules/*/**": true,
         "**/dl/**": true,
         "**/bitbake_cache/**": true,
-        "**/sstate/**": true
+        "**/sstate/**": true,
+        "${workspaceFolder}/poky/build/**": true
     }
 }
