@@ -1,5 +1,6 @@
 SUMMARY = "Copy custom files to overlay"
 DESCRIPTION = "Copy custom files to overlay"
+LICENSE = "CLOSED"
 
 # Specify files to pull in
 # By default, Yocto will look in a directory called "files", which hello.txt is in
