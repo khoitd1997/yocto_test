@@ -6,7 +6,7 @@ MACHINE = "qemuarm64"
 
 DISTRO = "poky"
 
-PACKAGE_CLASSES ?= "package_rpm"
+PACKAGE_CLASSES ?= "package_ipk"
 
 SDKMACHINE = "x86_64"
 
