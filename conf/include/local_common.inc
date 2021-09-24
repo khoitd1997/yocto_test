@@ -1,5 +1,8 @@
 require build_path.inc
 
+# NOTE: Add extra Python import here
+OE_EXTRA_IMPORTS_append = " math multiprocessing "
+
 INHERIT += "buildhistory buildstats" 
 
 MACHINE = "qemuarm64"
@@ -29,9 +32,7 @@ BB_DISKMON_DIRS = "\
     ABORT,${SSTATE_DIR},100M,1K \
     ABORT,/tmp,10M,1K"
 
-# Try to use functions of util modules from
-# https://github.com/openembedded/openembedded-core/blob/master/meta/lib/oe/utils.py
-BB_NUMBER_THREADS = "${@oe.utils.cpu_count() - 1}"
+BB_NUMBER_THREADS = "${@max(math.floor(multiprocessing.cpu_count() * 0.75), 1)}"
 PARALLEL_MAKE = "-j ${BB_NUMBER_THREADS}"
 
 SSTATE_DIR = "${KSD_REPO_ROOT_DIR}/sstate"
