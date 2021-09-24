@@ -24,5 +24,9 @@ cp ${custom_conf_dir}/include/* ${poky_build_conf_dir}
 
 source_oe_init_script
 
+# time bitbake procrank
 time bitbake core-image-minimal
 # bitbake core-image-sato
+
+# TODO(kd): Compile log file is at
+# /home/kd/yocto_test/poky/build/tmp/work/cortexa57-poky-linux/procrank/0.1-r0/temp/
