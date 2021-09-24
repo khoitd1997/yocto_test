@@ -33,7 +33,6 @@ BB_DISKMON_DIRS = "\
     ABORT,/tmp,10M,1K"
 
 BB_NUMBER_THREADS = "${@max(math.floor(multiprocessing.cpu_count() * 0.75), 1)}"
-PARALLEL_MAKE = "-j ${BB_NUMBER_THREADS}"
 
 SSTATE_DIR = "${KSD_REPO_ROOT_DIR}/sstate"
 SSTATE_MIRRORS = "file://.* file://${SSTATE_DIR}/PATH"
