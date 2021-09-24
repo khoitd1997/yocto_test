@@ -25,8 +25,20 @@ function start_toaster {
     source toaster start ${toaster_args}
 }
 
-# include cd to make sure we are running in the correct directory
+# use "-q" option to have stdout(but not stderr) directed to /dev/null
 function source_oe_init_script {
+    local curr_pwd=${PWD}
+
+    # cd to poky_dir to make sure the build directory is created properly
+    # technically could call source ${oe_init_script_path} build_dir
+    # but that might not work with some shell
     cd ${poky_dir}
-    source ${oe_init_script_path}
+    if [ "${1}" = "-q" ]; then
+        shift
+        source ${oe_init_script_path} > /dev/null
+    else
+        source ${oe_init_script_path}
+    fi
+
+    cd ${curr_pwd}
 }
