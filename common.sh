@@ -1,7 +1,12 @@
 #!/bin/bash
 
-common_script_dir="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
-
+# when sourcing the script, different method needed to get path
+# to current script
+if [ -n "$BASH_SOURCE" ]; then
+    common_script_dir=$(dirname $(readlink -f ${BASH_SOURCE}))
+else
+    common_script_dir="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
+fi
 sstate_package_path="${common_script_dir}/sstate.tar.gz"
 sstate_dir="${common_script_dir}/sstate"
 

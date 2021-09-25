@@ -48,7 +48,14 @@ For fresh build with no cache(both ssstate and dl), it takes about 75 mins with 
 
 From the Yocto quickstart:
 
-```
+```shell
 gawk wget git-core diffstat unzip texinfo gcc-multilib
 build-essential chrpath socat libsdl1.2-dev xterm python3 tar
+```
+
+## Usage instructions
+
+```shell
+cd path-to-this-repo
+source env_init.sh # set necessary variables and sourcing the command list
 ```
