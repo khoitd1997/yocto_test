@@ -17,5 +17,9 @@ function upload_folder {
     find ${folder_name} -type f -exec curl --netrc-file $script_dir/nexus_credential.txt --ftp-create-dirs -T {} http://localhost:8081/repository/test_1/{} \;
 }
 
+# TODO: Downloading assets right now requires a lot of scripting with the REST API
+# it also requires the plaintext file password method, should definitely look
+# into using a better method for fetching
+
 # upload_folder "dl" "${dl_dir}"
 upload_folder "sstate" "${script_dir}"
