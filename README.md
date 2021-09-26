@@ -68,3 +68,15 @@ make xconfig
 . env_init.sh
 show_kernel_xconfig
 ```
+
+Kernel customizations are now organized through kernel features(aka .scc files), thus, the defconfig files are no longer as important and is mostly generated for debugging purposes or as an intermediate step to generate .scc files. Below are some commands to generate fragments and defconfig files
+
+```shell
+. env_init.sh
+
+# generate the current kernel defconfig to conf/tmp/defconfig
+generate_kernel_defconfig
+
+# generate the diff fragment to conf/tmp/fragment.cfg
+generate_kernel_cfg_fragment
+```

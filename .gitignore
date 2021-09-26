@@ -14,3 +14,7 @@ vscode-bitbake-build/
 .history/
 
 nexus_credential.txt
+
+# ignore files in folder foo
+/conf/tmp/*
+!/conf/tmp/.gitkeep

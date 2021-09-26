@@ -46,6 +46,7 @@ IMAGE_FSTYPES_remove = "tar.bz2"
 
 EXTRA_IMAGE_FEATURES_remove = "ssh-server-dropbear"
 
-KSD_KERNEL_DEFCONFIG = "${KSD_KERNEL_CONF_DIR}/ksd_debug_defconfig"
+KERNEL_FEATURES_append = "features/test_features/test.scc"
+# KERNEL_FEATURES += "features/netfilter/netfilter.scc"
 
 # KCONFIG_CONFIG_COMMAND = "xconfig"

@@ -23,7 +23,6 @@ poky_build_conf_dir="${poky_build_dir}/conf"
 poky_build_history_dir="${poky_build_dir}/buildhistory/images/qemuarm64/glibc/core-image-minimal"
 
 custom_conf_dir="${common_script_dir}/conf"
-kernel_conf_dir="${custom_conf_dir}/kernel"
 
 oe_init_script_path="${poky_dir}/oe-init-build-env"
 
@@ -109,7 +108,7 @@ function show_kernel_xconfig {
     cd ${curr_pwd}
 }
 
-function save_kernel_defconfig {
+function generate_kernel_defconfig {
     local curr_pwd=${PWD}
 
     update_yocto_config

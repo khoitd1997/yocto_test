@@ -45,15 +45,15 @@
 # addtask xconfig after do_configure
 
 do_savedefconfig_append() {
-	bbplain "Copying kernel defconfig to:\n${KSD_KERNEL_DEFCONFIG}\n"
-    cp ${B}/defconfig ${KSD_KERNEL_DEFCONFIG}
+	bbplain "Copying kernel defconfig to:\n${KSD_TMP_CONF_DIR}\n"
+    cp ${B}/defconfig ${KSD_TMP_CONF_DIR}
 }
 
 python do_diffconfig_append() {
     # TODO(kd): Rethink the workflow of this
     # if fragment exists then it means that there has ben changes
     # so copy the fragment, otw, truncate the fragment file
-    destfragment = os.path.join(d.getVar('KSD_KERNEL_CONF_DIR'), "fragment.cfg")
+    destfragment = os.path.join(d.getVar('KSD_TMP_CONF_DIR'), "fragment.cfg")
     if os.path.exists(fragment):
         shutil.copy(fragment, destfragment)
         bb.plain("Config fragment has been copied to:\n %s" % destfragment)

@@ -9,6 +9,9 @@ define KFEATURE_COMPATIBILITY all
 
 define KTYPE standard
 
+# By default, the build system will only warn on missing hardware configurations
+# if they don't appear in the final .config
+# https://www.yoctoproject.org/docs/latest/kernel-dev/kernel-dev.html#determining-hardware-and-non-hardware-features-for-the-kernel-configuration-audit-phase
 kconf non-hardware test.cfg
 kconf non-hardware test_2.cfg
 
