@@ -2,10 +2,6 @@
 
 ## First time setup
 
-```shell
-./init_project.sh
-```
-
 ## Notes
 
 **When a build is running, bitbake is not usable**
@@ -14,7 +10,7 @@ All `TODO` are in the form: `TODO(kd): ...`
 
 ```shell
 # create layer
-yocto-layer create yannik
+bitbake-layers create-layer path-to-layer
 ```
 
 Overwriting system config files: https://stackoverflow.com/questions/54605656/how-to-overwrite-linux-system-files-into-the-yocto-filesystem

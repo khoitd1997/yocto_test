@@ -49,6 +49,16 @@ function source_oe_init_script {
     cd ${curr_pwd}
 }
 
+function init_repo {
+    local curr_pwd=${PWD}
+
+    cd ${common_script_dir}
+    git submodule init
+    git submodule update
+
+    cd ${curr_pwd}
+}
+
 # turn on variables to help debugging the Yocto buildsystem easier
 function enable_bb_debug_flag {
     export BB_VERBOSE_LOGS=1
