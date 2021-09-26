@@ -55,3 +55,16 @@ build-essential chrpath socat libsdl1.2-dev xterm python3 tar
 cd path-to-this-repo
 source env_init.sh # set necessary variables and sourcing the command list
 ```
+
+Due to the complexity of the build system, users are heavily encouraged to use the util functions and scripts to do what they want, for example:
+
+```shell
+# BAD EXAMPLE:
+# this went around bitbake so it might break things
+cd path-to-kernel-src
+make xconfig
+
+# GOOD EXAMPLE:
+. env_init.sh
+show_kernel_xconfig
+```
