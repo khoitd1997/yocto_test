@@ -1,0 +1,15 @@
+# The yocto-kernel-cache repo in general is a good reference source for .scc
+# one exmaple is
+# https://git.yoctoproject.org/cgit/cgit.cgi/yocto-kernel-cache/tree/features/netfilter
+# syntax reference: 
+# https://www.yoctoproject.org/docs/1.6.1/kernel-dev/kernel-dev.html#scc-reference
+
+define KFEATURE_DESCRIPTION "Test Feature"
+define KFEATURE_COMPATIBILITY all
+
+define KTYPE standard
+
+kconf non-hardware test.cfg
+kconf non-hardware test_2.cfg
+
+patch test.patch

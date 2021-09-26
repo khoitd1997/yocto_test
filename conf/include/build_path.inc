@@ -10,5 +10,8 @@
 
 KSD_REPO_ROOT_DIR = "${TOPDIR}/../.."
 
+KSD_CONF_DIR = "${KSD_REPO_ROOT_DIR}/conf"
+KSD_KERNEL_CONF_DIR = "${KSD_CONF_DIR}/kernel"
+
 KSD_META_OPENEMBEDDED_DIR = "${KSD_REPO_ROOT_DIR}/meta-openembedded"
 KSD_POKY_DIR = "${TOPDIR}/.."
