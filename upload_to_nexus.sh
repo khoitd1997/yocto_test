@@ -22,4 +22,4 @@ function upload_folder {
 # into using a better method for fetching
 
 # upload_folder "dl" "${dl_dir}"
-upload_folder "sstate" "${script_dir}"
+upload_folder "sstate" "${cache_dir}"

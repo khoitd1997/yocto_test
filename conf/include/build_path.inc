@@ -10,6 +10,8 @@
 
 KSD_REPO_ROOT_DIR = "${TOPDIR}/../.."
 
+KSD_CACHE_DIR = "${KSD_REPO_ROOT_DIR}/cache"
+
 KSD_CONF_DIR = "${KSD_REPO_ROOT_DIR}/conf"
 KSD_KERNEL_CONF_DIR = "${KSD_CONF_DIR}/kernel"
 

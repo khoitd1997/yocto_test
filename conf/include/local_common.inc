@@ -34,12 +34,12 @@ BB_DISKMON_DIRS = "\
 
 BB_NUMBER_THREADS = "${@max(math.floor(multiprocessing.cpu_count() * 0.75), 1)}"
 
-SSTATE_DIR = "${KSD_REPO_ROOT_DIR}/sstate"
+SSTATE_DIR = "${KSD_CACHE_DIR}/sstate"
 SSTATE_MIRRORS = "file://.* file://${SSTATE_DIR}/PATH"
 
-DL_DIR = "${KSD_REPO_ROOT_DIR}/dl"
+DL_DIR = "${KSD_CACHE_DIR}/dl"
 BB_GENERATE_MIRROR_TARBALLS = "1"
-CACHE = "${KSD_REPO_ROOT_DIR}/bitbake_cache"
+CACHE = "${KSD_CACHE_DIR}/bitbake_cache"
 
 IMAGE_FSTYPES = "ext4"
 IMAGE_FSTYPES_remove = "tar.bz2"

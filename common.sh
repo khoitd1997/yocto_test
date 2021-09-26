@@ -7,10 +7,13 @@ if [ -n "$BASH_SOURCE" ]; then
 else
     common_script_dir="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 fi
-sstate_package_path="${common_script_dir}/sstate.tar.gz"
-sstate_dir="${common_script_dir}/sstate"
 
-dl_dir="${common_script_dir}/dl"
+cache_dir="${common_script_dir}/cache"
+
+sstate_package_path="${common_script_dir}/sstate.tar.gz"
+sstate_dir="${cache_dir}/sstate"
+
+dl_dir="${cache_dir}/dl"
 
 poky_dir="${common_script_dir}/poky"
 poky_build_dir="${poky_dir}/build"
@@ -21,7 +24,7 @@ kernel_conf_dir="${custom_conf_dir}/kernel"
 
 oe_init_script_path="${poky_dir}/oe-init-build-env"
 
-bitbake_cache_dir="${common_script_dir}/bitbake_cache"
+bitbake_cache_dir="${cache_dir}/bitbake_cache"
 
 toaster_url="localhost:8223"
 toaster_args="nobuild webport=${toaster_url}"

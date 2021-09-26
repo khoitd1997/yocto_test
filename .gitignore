@@ -1,6 +1,4 @@
-/sstate/
-/dl/
-/bitbake_cache/
+/cache
 
 /sstate.tar.gz
 
