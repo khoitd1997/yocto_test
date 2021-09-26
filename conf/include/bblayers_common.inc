@@ -15,9 +15,9 @@ BBLAYERS = " \
   ${KSD_POKY_DIR}/meta-poky \
   ${KSD_POKY_DIR}/meta-yocto-bsp \
   \
-  ${KSD_REPO_ROOT_DIR}/meta-user-package \
+  ${KSD_USER_LAYERS_DIR}/meta-user-package \
   ${KSD_REPO_ROOT_DIR}/meta-qt5 \
-  ${KSD_REPO_ROOT_DIR}/meta-kernel-customization \
+  ${KSD_USER_LAYERS_DIR}/meta-kernel-customization \
   "
 
 BBPATH = "${TOPDIR}"
