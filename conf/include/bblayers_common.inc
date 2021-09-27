@@ -19,6 +19,9 @@ BBLAYERS = " \
   ${KSD_USER_LAYERS_DIR}/meta-kernel-customization \
   \
   ${KSD_THIRD_PARTY_LAYERS_DIR}/meta-qt5 \
+  \
+  ${KSD_THIRD_PARTY_LAYERS_DIR}/meta-xilinx-tools \
+  ${KSD_THIRD_PARTY_LAYERS_DIR}/meta-xilinx/meta-xilinx-bsp \
   "
 
 BBPATH = "${TOPDIR}"

@@ -7,3 +7,9 @@
 [submodule "third_party_layers/meta-openembedded"]
 	path = third_party_layers/meta-openembedded
 	url = https://github.com/openembedded/meta-openembedded.git
+[submodule "third_party_layers/meta-xilinx-tools"]
+	path = third_party_layers/meta-xilinx-tools
+	url = https://github.com/Xilinx/meta-xilinx-tools.git
+[submodule "third_party_layers/meta-xilinx"]
+	path = third_party_layers/meta-xilinx
+	url = https://github.com/Xilinx/meta-xilinx.git
