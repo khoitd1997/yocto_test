@@ -2,6 +2,13 @@
 
 ## First time setup
 
+This repo uses git submodule to mange layers, after clone do:
+
+```shell
+git submodule init
+git submodule update
+```
+
 ## Notes
 
 **When a build is running, bitbake is not usable**
@@ -46,7 +53,7 @@ From the Yocto quickstart:
 
 ```shell
 gawk wget git-core diffstat unzip texinfo gcc-multilib
-build-essential chrpath socat libsdl1.2-dev xterm python3 tar
+build-essential chrpath socat libsdl1.2-dev xterm python3 tar texinfo
 ```
 
 ## Usage instructions
@@ -82,3 +89,7 @@ generate_kernel_cfg_fragment
 ```
 
 The `expert_scripts/` directory contains scripts geared more towards expert users that go beyond simple building and config changes
+
+TODO(kd): U-boot build doesn't seem to be in the standard Yocto, seems like every BSP does it differently:
+https://git.yoctoproject.org/cgit/cgit.cgi/meta-freescale/tree/recipes-bsp/u-boot/u-boot-imx_2017.03.bb?h=rocko
+https://xilinx-wiki.atlassian.net/wiki/spaces/A/pages/18841883/Yocto

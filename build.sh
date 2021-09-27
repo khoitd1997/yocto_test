@@ -5,8 +5,6 @@ set -e
 script_dir="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 source ${script_dir}/common.sh
 
-init_repo
-
 # NOTE: bitbake sometimes timeout or do weird things
 # wipe the build directories to start at clean slate
 # during experimenting
@@ -21,6 +19,9 @@ if [ -z "${curr_build_config}" ]; then
 else
     print_important_message "****Current build config: ${curr_build_config}****\n"
 fi
+
+# after a clean_all the conf directory will have been wiped out so use set_build_config to reinitialize it
+set_build_config "${curr_build_config}"
 
 source_oe_init_script
 

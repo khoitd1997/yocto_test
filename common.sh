@@ -40,7 +40,9 @@ function print_important_message {
 }
 
 function clean_all {
-    rm -rvf ${poky_build_dir} ${cache_dir}
+    echo "Cleaning yocto build"
+    rm -rf ${poky_build_dir} ${cache_dir}
+    echo "Finished cleaning yocto build"
 }
 
 function start_toaster {
@@ -166,10 +168,6 @@ function build_incremental_kernel {
 
     cd ${curr_pwd}
 }
-
-# TODO(kd): Generate kernel patch
-# for uncommited changes:
-# git diff > my_patch.patch
 
 # TODO(kd): Devtool workflow for kernel
 # https://www.yoctoproject.org/docs/latest/kernel-dev/kernel-dev.html#applying-patches
