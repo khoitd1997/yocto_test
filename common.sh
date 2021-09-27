@@ -8,6 +8,8 @@ else
     common_script_dir="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 fi
 
+build_var_storage_file_path="${common_script_dir}/.build_var_storage"
+
 cache_dir="${common_script_dir}/cache"
 
 sstate_package_path="${common_script_dir}/sstate.tar.gz"
@@ -30,6 +32,16 @@ bitbake_cache_dir="${cache_dir}/bitbake_cache"
 
 toaster_url="localhost:8223"
 toaster_args="nobuild webport=${toaster_url}"
+
+function print_important_message {
+    local cyan_color='\033[0;31m'
+    local reset_color='\033[0m'
+    printf "${cyan_color}${1}${reset_color}"
+}
+
+function clean_all {
+    rm -rvf ${poky_build_dir} ${cache_dir}
+}
 
 function start_toaster {
     source toaster stop ${toaster_args}
@@ -88,17 +100,30 @@ function open_recipe_work_folder {
     cd ${curr_pwd}
 }
 
-function update_yocto_config {
-    mkdir -p ${poky_build_conf_dir}
+function set_build_config {
+    local build_config="${1}"
 
-    cp ${custom_conf_dir}/${build_config}/* ${poky_build_conf_dir}
-    cp ${custom_conf_dir}/include/* ${poky_build_conf_dir}
+    mkdir -p ${poky_build_conf_dir}
+    rm -rf ${poky_build_conf_dir}/*
+
+    ln -sf ${custom_conf_dir}/${build_config}/* ${poky_build_conf_dir}
+    ln -sf ${custom_conf_dir}/include/* ${poky_build_conf_dir}
+
+    echo "KSD_CURR_BUILD_CONFIG=${build_config}" > ${build_var_storage_file_path}
+}
+
+function get_build_config {
+    if [ -f "${build_var_storage_file_path}" ]; then
+        source ${build_var_storage_file_path}
+        get_build_config_retval=${KSD_CURR_BUILD_CONFIG}
+    else
+        get_build_config_retval=""
+    fi
 }
 
 function show_kernel_xconfig {
     local curr_pwd=${PWD}
 
-    update_yocto_config
     source_oe_init_script
 
     bitbake -c menuconfig virtual/kernel
@@ -111,7 +136,6 @@ function show_kernel_xconfig {
 function generate_kernel_defconfig {
     local curr_pwd=${PWD}
 
-    update_yocto_config
     source_oe_init_script
 
     bitbake -c savedefconfig virtual/kernel
@@ -126,7 +150,6 @@ function generate_kernel_defconfig {
 function generate_kernel_cfg_fragment {
     local curr_pwd=${PWD}
 
-    update_yocto_config
     source_oe_init_script
 
     bitbake -c diffconfig virtual/kernel
@@ -137,20 +160,12 @@ function generate_kernel_cfg_fragment {
 function build_incremental_kernel {
     local curr_pwd=${PWD}
 
-    update_yocto_config
     source_oe_init_script
 
     bitbake virtual/kernel
 
     cd ${curr_pwd}
 }
-
-# TODO(kd): Should probably rethink this
-if [ -z "${1}" ]; then
-    export build_config="debug"
-else
-    export build_config="${1}"
-fi
 
 # TODO(kd): Generate kernel patch
 # for uncommited changes:

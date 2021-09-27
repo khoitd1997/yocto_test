@@ -3,7 +3,7 @@
 set -e
 
 script_dir="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
-source ${script_dir}/common.sh
+source ${script_dir}/../common.sh
 
 # TODO: Right now credentials have to be stored in file
 # Try to find a way to do this more securely

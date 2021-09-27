@@ -6,7 +6,7 @@
 set -e
 
 script_dir="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
-source ${script_dir}/common.sh
+source ${script_dir}/../common.sh
 
 defaut_bb_target_name="core-image-minimal"
 if [ "$#" -eq 1 ]; then
@@ -16,7 +16,7 @@ elif [ "$#" -eq 2 ]; then
     var_name="${1}"
     bb_target_name="${2}"
 else
-    echo "Wrong number of arguments"
+    echo "Error: Wrong number of arguments"
     echo "usage: get_bb_var.sh <var_name> [bb_target_name]"
     exit 1
 fi

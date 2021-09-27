@@ -53,7 +53,7 @@ build-essential chrpath socat libsdl1.2-dev xterm python3 tar
 
 ```shell
 cd path-to-this-repo
-source env_init.sh # set necessary variables and sourcing the command list
+source init_env.sh # set necessary variables and sourcing the command list
 ```
 
 Due to the complexity of the build system, users are heavily encouraged to use the util functions and scripts to do what they want, for example:
@@ -65,14 +65,14 @@ cd path-to-kernel-src
 make xconfig
 
 # GOOD EXAMPLE:
-. env_init.sh
+. init_env.sh
 show_kernel_xconfig
 ```
 
 Kernel customizations are now organized through kernel features(aka .scc files), thus, the defconfig files are no longer as important and is mostly generated for debugging purposes or as an intermediate step to generate .scc files. Below are some commands to generate fragments and defconfig files
 
 ```shell
-. env_init.sh
+. init_env.sh
 
 # generate the current kernel defconfig to conf/tmp/defconfig
 generate_kernel_defconfig
@@ -80,3 +80,5 @@ generate_kernel_defconfig
 # generate the diff fragment to conf/tmp/fragment.cfg
 generate_kernel_cfg_fragment
 ```
+
+The `expert_scripts/` directory contains scripts geared more towards expert users that go beyond simple building and config changes

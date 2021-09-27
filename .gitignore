@@ -13,8 +13,9 @@ vscode-bitbake-build/
 # Local History for Visual Studio Code
 .history/
 
-nexus_credential.txt
+/expert_scripts/nexus_credential.txt
 
 # ignore files in folder foo
 /conf/tmp/*
 !/conf/tmp/.gitkeep
+.build_var_storage

@@ -10,10 +10,18 @@ init_repo
 # NOTE: bitbake sometimes timeout or do weird things
 # wipe the build directories to start at clean slate
 # during experimenting
-echo "REMOVING YOCTO BUILD"
+# echo "REMOVING YOCTO BUILD"
 # rm -rf ${poky_build_dir}
 
-update_yocto_config
+get_build_config
+curr_build_config="${get_build_config_retval}"
+if [ -z "${curr_build_config}" ]; then
+    echo "Build config is not set! Please use set_build_config.sh to set it"
+    exit 1
+else
+    print_important_message "****Current build config: ${curr_build_config}****\n"
+fi
+
 source_oe_init_script
 
 # time bitbake procrank
