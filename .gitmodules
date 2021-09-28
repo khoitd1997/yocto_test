@@ -13,3 +13,6 @@
 [submodule "third_party_layers/meta-xilinx"]
 	path = third_party_layers/meta-xilinx
 	url = https://github.com/Xilinx/meta-xilinx.git
+[submodule "third_party_layers/meta-petalinux"]
+	path = third_party_layers/meta-petalinux
+	url = https://github.com/Xilinx/meta-petalinux.git

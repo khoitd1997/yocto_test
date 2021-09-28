@@ -5,9 +5,15 @@ OE_EXTRA_IMPORTS_append = " math multiprocessing "
 
 INHERIT += "buildhistory buildstats" 
 
-MACHINE = "qemuarm64"
+# the local.conf of individual build config should set these variables
+# this is just a placeholder
+KSD_BUILD_NAME ?= "defaultname"
 
-DISTRO = "poky"
+# MACHINE = "qemuarm64"
+MACHINE = "zcu106-zynqmp"
+# MACHINE = "qemuzynq"
+
+DISTRO = "petalinux"
 
 PACKAGE_CLASSES ?= "package_ipk"
 
@@ -34,6 +40,11 @@ BB_DISKMON_DIRS = "\
 
 BB_NUMBER_THREADS = "${@max(math.floor(multiprocessing.cpu_count() * 0.75), 1)}"
 
+# NOTE: Every machine-distro comb should have a unique val for these
+KSD_BUILD_ID_STR = "${MACHINE}-${DISTRO}-${KSD_BUILD_NAME}"
+TMPDIR = "${TOPDIR}/${KSD_BUILD_ID_STR}/tmp"
+BUILDHISTORY_DIR = "${TOPDIR}/${KSD_BUILD_ID_STR}/buildhistory"
+
 SSTATE_DIR = "${KSD_CACHE_DIR}/sstate"
 SSTATE_MIRRORS = "file://.* file://${SSTATE_DIR}/PATH"
 
@@ -46,7 +57,16 @@ IMAGE_FSTYPES_remove = "tar.bz2"
 
 EXTRA_IMAGE_FEATURES_remove = "ssh-server-dropbear"
 
-KERNEL_FEATURES_append = "features/test_features/test.scc"
-# KERNEL_FEATURES += "features/netfilter/netfilter.scc"
+# KERNEL_FEATURES_append = "features/test_features/test.scc"
 
 # KCONFIG_CONFIG_COMMAND = "xconfig"
+
+XILINX_VER_MAIN = "2020.1"
+XILINX_VIVADO_DESIGN_SUIT = "/tools/Xilinx/Vivado/2020.1"
+
+PMU_FIRMWARE_DEPLOY_DIR = "${DEPLOY_DIR_IMAGE}"
+PMU_FIRMWARE_IMAGE_NAME = "pmu-firmware-${MACHINE}"
+
+# Fix for Xilinx issue:
+# https://github.com/Xilinx/meta-xilinx/pull/24
+DEFAULTTUNE = "cortexa53"
