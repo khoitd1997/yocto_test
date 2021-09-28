@@ -123,51 +123,82 @@ function get_build_config {
     fi
 }
 
-function show_kernel_xconfig {
+function util_show_xconfig {
     local curr_pwd=${PWD}
 
     source_oe_init_script
 
-    bitbake -c menuconfig virtual/kernel
+    bitbake -c menuconfig "${1}"
 
     # bitbake -c xconfig virtual/kernel
 
     cd ${curr_pwd}
 }
 
-function generate_kernel_defconfig {
+function util_generate_defconfig {
     local curr_pwd=${PWD}
 
     source_oe_init_script
 
-    bitbake -c savedefconfig virtual/kernel
+    bitbake -c savedefconfig "${1}"
 
     cd ${curr_pwd}
 }
 
+# TODO: Verify if the comment is true for u-boot
 # used for generating cfg fragment for use with 
 # .scc files
 # you must first use menuconfig to edit config you want
 # then use this function to generate the diff fragment
+function util_generate_cfg_fragment {
+    local curr_pwd=${PWD}
+
+    source_oe_init_script
+
+    bitbake -c diffconfig "${1}"
+
+    cd ${curr_pwd}
+}
+
+function util_build_incremental {
+    local curr_pwd=${PWD}
+
+    source_oe_init_script
+
+    bitbake "${1}"
+
+    cd ${curr_pwd}
+}
+
+### KERNEL RELATED FUNCTIONS ###
+function show_kernel_xconfig {
+    util_show_xconfig virtual/kernel
+}
+function generate_kernel_defconfig {
+    util_generate_defconfig virtual/kernel
+}
 function generate_kernel_cfg_fragment {
-    local curr_pwd=${PWD}
-
-    source_oe_init_script
-
-    bitbake -c diffconfig virtual/kernel
-
-    cd ${curr_pwd}
+    util_generate_cfg_fragment virtual/kernel
 }
-
 function build_incremental_kernel {
-    local curr_pwd=${PWD}
-
-    source_oe_init_script
-
-    bitbake virtual/kernel
-
-    cd ${curr_pwd}
+    util_build_incremental virtual/kernel
 }
+
+### UBOOT RELATED FUNCTIONS ###
+function show_uboot_xconfig {
+    util_show_xconfig u-boot-xlnx
+}
+# TODO(kd): Implement for u-boot
+function generate_uboot_defconfig {
+    util_generate_defconfig u-boot-xlnx
+}
+# TODO(kd): Check this one
+function generate_uboot_cfg_fragment {
+    util_generate_cfg_fragment u-boot-xlnx
+}
+
+function build_incremental_uboot {
+    util_build_incremental u-boot-xlnx
 
 # TODO(kd): Devtool workflow for kernel
 # https://www.yoctoproject.org/docs/latest/kernel-dev/kernel-dev.html#applying-patches
