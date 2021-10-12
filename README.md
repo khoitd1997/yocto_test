@@ -47,13 +47,8 @@ For fresh build with no cache(both ssstate and dl), it takes about 75 mins with 
 
 ## Needed Ubuntu packages
 
-- datamash: For build plots
-
-From the Yocto quickstart:
-
 ```shell
-gawk wget git-core diffstat unzip texinfo gcc-multilib
-build-essential chrpath socat libsdl1.2-dev xterm python3 tar texinfo
+run ./install_deps.sh to install deps
 ```
 
 ## Usage instructions
