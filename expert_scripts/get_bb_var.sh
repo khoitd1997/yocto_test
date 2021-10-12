@@ -8,10 +8,9 @@ set -e
 script_dir="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 source ${script_dir}/../common.sh
 
-defaut_bb_target_name="core-image-minimal"
 if [ "$#" -eq 1 ]; then
     var_name="${1}"
-    bb_target_name="${defaut_bb_target_name}"
+    bb_target_name="${default_bb_image_target}"
 elif [ "$#" -eq 2 ]; then
     var_name="${1}"
     bb_target_name="${2}"

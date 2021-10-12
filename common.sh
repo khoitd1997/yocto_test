@@ -30,6 +30,8 @@ oe_init_script_path="${poky_dir}/oe-init-build-env"
 
 bitbake_cache_dir="${cache_dir}/bitbake_cache"
 
+default_bb_image_target="petalinux-image-minimal"
+
 toaster_url="localhost:8223"
 toaster_args="nobuild webport=${toaster_url}"
 
@@ -199,6 +201,7 @@ function generate_uboot_cfg_fragment {
 
 function build_incremental_uboot {
     util_build_incremental u-boot-xlnx
+}
 
 # TODO(kd): Devtool workflow for kernel
 # https://www.yoctoproject.org/docs/latest/kernel-dev/kernel-dev.html#applying-patches

@@ -64,9 +64,21 @@ EXTRA_IMAGE_FEATURES_remove = "ssh-server-dropbear"
 XILINX_VER_MAIN = "2020.1"
 XILINX_VIVADO_DESIGN_SUIT = "/tools/Xilinx/Vivado/2020.1"
 
-PMU_FIRMWARE_DEPLOY_DIR = "${DEPLOY_DIR_IMAGE}"
-PMU_FIRMWARE_IMAGE_NAME = "pmu-firmware-${MACHINE}"
+# already set in zcu106-zynqmp.conf
+# PMU_FIRMWARE_DEPLOY_DIR = "${DEPLOY_DIR_IMAGE}"
+# PMU_FIRMWARE_IMAGE_NAME = "pmu-firmware-${MACHINE}"
 
 # Fix for Xilinx issue:
 # https://github.com/Xilinx/meta-xilinx/pull/24
 DEFAULTTUNE = "cortexa53"
+
+# u-boot settings
+
+# UBOOT_CONFIG # this is the defconfig name as well as the IMAGE_FSTYPES
+
+# TODO(kd): Move these to their own machine
+# SPL cannot be used by Zynqmp without some patches:
+# https://xilinx-wiki.atlassian.net/wiki/spaces/A/pages/18842574/U-Boot+Secondary+Program+Loader
+SPL_BINARY_zcu106-zynqmp = ""
+
+SOC_VARIANT = "cg"

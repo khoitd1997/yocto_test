@@ -5,12 +5,6 @@ set -e
 script_dir="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 source ${script_dir}/common.sh
 
-# NOTE: bitbake sometimes timeout or do weird things
-# wipe the build directories to start at clean slate
-# during experimenting
-# echo "REMOVING YOCTO BUILD"
-# rm -rf ${poky_build_dir}
-
 get_build_config
 curr_build_config="${get_build_config_retval}"
 if [ -z "${curr_build_config}" ]; then
@@ -26,7 +20,7 @@ set_build_config "${curr_build_config}"
 source_oe_init_script
 
 # time bitbake procrank
-time bitbake petalinux-image-minimal
+time bitbake ${default_bb_image_target}
 # time bitbake --continue core-image-minimal
 # bitbake --continue core-image-sato
 
