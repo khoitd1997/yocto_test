@@ -17,12 +17,16 @@ sstate_dir="${cache_dir}/sstate"
 
 dl_dir="${cache_dir}/dl"
 
+default_bb_image_target="petalinux-image-minimal"
+
 poky_dir="${common_script_dir}/poky"
 poky_build_dir="${poky_dir}/build"
 poky_tmp_dir="${poky_build_dir}/tmp"
 poky_work_dir="${poky_tmp_dir}/work"
 poky_build_conf_dir="${poky_build_dir}/conf"
-poky_build_history_dir="${poky_build_dir}/buildhistory/images/qemuarm64/glibc/core-image-minimal"
+
+# TODO(kd): make this more dynamic
+poky_build_history_dir="${poky_build_dir}/buildhistory/images/qemuarm64/glibc/${default_bb_image_target}"
 
 custom_conf_dir="${common_script_dir}/conf"
 
@@ -30,7 +34,6 @@ oe_init_script_path="${poky_dir}/oe-init-build-env"
 
 bitbake_cache_dir="${cache_dir}/bitbake_cache"
 
-default_bb_image_target="petalinux-image-minimal"
 
 toaster_url="localhost:8223"
 toaster_args="nobuild webport=${toaster_url}"
