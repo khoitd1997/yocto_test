@@ -1,7 +1,7 @@
 #!/bin/bash
 # Script to get a bitbake variable's value
 # usage: get_bb_var.sh <var_name> [bb_target_name]
-# if no bb_target_name is specified, default to core-image-minimal
+# if no bb_target_name is specified, default to ${default_bb_image_target}
 
 set -e
 

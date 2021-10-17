@@ -24,8 +24,14 @@ set_build_config "${curr_build_config}"
 
 source_oe_init_script
 
+bb_target_name="${default_bb_image_target}"
+if [ "$#" -eq 1 ]; then
+    bb_target_name="${1}"
+fi
+
+print_important_message "Building Target: ${bb_target_name}\n"
 # time bitbake procrank
-time bitbake ${default_bb_image_target}
+time bitbake ${bb_target_name}
 # time bitbake --continue core-image-minimal
 # bitbake --continue core-image-sato
 

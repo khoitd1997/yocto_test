@@ -80,6 +80,6 @@ DEFAULTTUNE = "cortexa53"
 # TODO(kd): Move these to their own machine
 # SPL cannot be used by Zynqmp without some patches:
 # https://xilinx-wiki.atlassian.net/wiki/spaces/A/pages/18842574/U-Boot+Secondary+Program+Loader
-SPL_BINARY_zcu106-zynqmp = ""
+SPL_BINARY_${MACHINE} = ""
 
 SOC_VARIANT = "cg"
