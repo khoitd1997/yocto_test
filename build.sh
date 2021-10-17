@@ -14,6 +14,11 @@ else
     print_important_message "****Current build config: ${curr_build_config}****\n"
 fi
 
+# NOTE: This is to fix an issue with the layer
+# https://github.com/Xilinx/meta-openamp/issues/7
+# the issue should be fixed in later versions
+mkdir -p ${third_party_layer_dir}/meta-openamp/files/custom-licenses
+
 # after a clean_all the conf directory will have been wiped out so use set_build_config to reinitialize it
 set_build_config "${curr_build_config}"
 

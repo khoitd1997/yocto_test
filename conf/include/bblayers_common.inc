@@ -37,6 +37,7 @@ BBLAYERS = " \
     ${KSD_THIRD_PARTY_LAYERS_DIR}/meta-xilinx-tools \
     ${KSD_THIRD_PARTY_LAYERS_DIR}/meta-petalinux \
     ${KSD_THIRD_PARTY_LAYERS_DIR}/meta-openamp \
+    ${KSD_THIRD_PARTY_LAYERS_DIR}/meta-virtualization \
 "
 
 BBLAYERS_NON_REMOVABLE ?= " \

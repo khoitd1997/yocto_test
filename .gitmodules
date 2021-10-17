@@ -19,3 +19,6 @@
 [submodule "third_party_layers/meta-openamp"]
 	path = third_party_layers/meta-openamp
 	url = https://github.com/Xilinx/meta-openamp.git
+[submodule "third_party_layers/meta-virtualization"]
+	path = third_party_layers/meta-virtualization
+	url = https://github.com/Xilinx/meta-virtualization.git

@@ -25,6 +25,8 @@ poky_tmp_dir="${poky_build_dir}/tmp"
 poky_work_dir="${poky_tmp_dir}/work"
 poky_build_conf_dir="${poky_build_dir}/conf"
 
+third_party_layer_dir="${common_script_dir}/third_party_layers"
+
 # TODO(kd): make this more dynamic
 poky_build_history_dir="${poky_build_dir}/buildhistory/images/qemuarm64/glibc/${default_bb_image_target}"
 

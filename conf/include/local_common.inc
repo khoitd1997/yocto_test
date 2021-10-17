@@ -10,8 +10,9 @@ INHERIT += "buildhistory buildstats"
 KSD_BUILD_NAME ?= "defaultname"
 
 # MACHINE = "qemuarm64"
-MACHINE = "zcu106-zynqmp"
+# MACHINE = "zcu106-zynqmp"
 # MACHINE = "qemuzynq"
+MACHINE = "zynqmp-generic"
 
 DISTRO = "petalinux"
 
