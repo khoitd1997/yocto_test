@@ -14,4 +14,4 @@ CYAN='\033[0;36m'
 NC='\033[0m'
 printf "${CYAN}Use 'Ctrl+a c' to get to QEMU shell, then enter 'quit' to quit\n${NC}"
 runqemu \
-    qemuarm64 core-image-minimal ext4 nographic serial slirp
+    qemuarm64 ${default_bb_image_target} ext4 nographic serial slirp
