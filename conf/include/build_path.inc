@@ -10,6 +10,8 @@
 
 KSD_REPO_ROOT_DIR = "${TOPDIR}/../.."
 
+KSD_XSA_DIR = "${KSD_REPO_ROOT_DIR}/xsa"
+
 KSD_USER_LAYERS_DIR = "${KSD_REPO_ROOT_DIR}/user_layers"
 KSD_THIRD_PARTY_LAYERS_DIR = "${KSD_REPO_ROOT_DIR}/third_party_layers"
 

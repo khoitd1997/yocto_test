@@ -12,6 +12,6 @@ source_oe_init_script -q
 
 CYAN='\033[0;36m'
 NC='\033[0m'
-printf "${CYAN}Use 'Ctrl+a c' to get to QEMU shell, then enter 'quit' to quit\n${NC}"
+printf "${CYAN}Use 'Ctrl+a c' to get to QEMU shell, then enter 'quit' to quit${NC}"
 runqemu \
-    qemuarm64 ${default_bb_image_target} ext4 nographic serial slirp
+    my-zcu102-zynqmp ${default_bb_image_target} ext4 nographic serial slirp

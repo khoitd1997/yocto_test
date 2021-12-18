@@ -3,7 +3,7 @@
 set -e
 
 script_dir="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
-source ${script_dir}/common.sh
+source "${script_dir}/common.sh"
 
 get_build_config
 curr_build_config="${get_build_config_retval}"
@@ -17,7 +17,7 @@ fi
 # NOTE: This is to fix an issue with the layer
 # https://github.com/Xilinx/meta-openamp/issues/7
 # the issue should be fixed in later versions
-mkdir -p ${third_party_layer_dir}/meta-openamp/files/custom-licenses
+mkdir -p "${third_party_layer_dir}/meta-openamp/files/custom-licenses"
 
 # after a clean_all the conf directory will have been wiped out so use set_build_config to reinitialize it
 set_build_config "${curr_build_config}"
@@ -31,7 +31,7 @@ fi
 
 print_important_message "Building Target: ${bb_target_name}\n"
 # time bitbake procrank
-time bitbake ${bb_target_name}
+time bitbake "${bb_target_name}"
 # time bitbake --continue core-image-minimal
 # bitbake --continue core-image-sato
 

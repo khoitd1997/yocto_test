@@ -17,7 +17,8 @@ sstate_dir="${cache_dir}/sstate"
 
 dl_dir="${cache_dir}/dl"
 
-default_bb_image_target="petalinux-image-minimal"
+# default_bb_image_target="petalinux-image-minimal"
+default_bb_image_target="core-image-minimal"
 
 poky_dir="${common_script_dir}/poky"
 poky_build_dir="${poky_dir}/build"
@@ -26,6 +27,9 @@ poky_work_dir="${poky_tmp_dir}/work"
 poky_build_conf_dir="${poky_build_dir}/conf"
 
 third_party_layer_dir="${common_script_dir}/third_party_layers"
+user_layer_dir="${common_script_dir}/user_layers"
+
+meta_user_package_dir="${user_layer_dir}/meta-user-package"
 
 # TODO(kd): make this more dynamic
 poky_build_history_dir="${poky_build_dir}/buildhistory/images/qemuarm64/glibc/${default_bb_image_target}"
@@ -58,21 +62,22 @@ function start_toaster {
 }
 
 # use "-q" option to have stdout(but not stderr) directed to /dev/null
+# shellcheck disable=SC2120
 function source_oe_init_script {
     local curr_pwd=${PWD}
 
     # cd to poky_dir to make sure the build directory is created properly
     # technically could call source ${oe_init_script_path} build_dir
     # but that might not work with some shell
-    cd ${poky_dir}
+    cd "${poky_dir}" || exit
     if [ "${1}" = "-q" ]; then
         shift
-        source ${oe_init_script_path} > /dev/null
+        source "${oe_init_script_path}" > /dev/null
     else
-        source ${oe_init_script_path}
+        source "${oe_init_script_path}"
     fi
 
-    cd ${curr_pwd}
+    cd "${curr_pwd}" || exit
 }
 
 function init_repo {

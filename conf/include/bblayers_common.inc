@@ -1,20 +1,20 @@
 require build_path.inc
 
-# NOTE: Can't use custom variables in bblayers related files
-# since it would require inheriting another file
-# to keep things simple, just use built-in variables for bblayers related
-
 # POKY_BBLAYERS_CONF_VERSION is increased each time build/conf/bblayers.conf
 # changes incompatibly
 POKY_BBLAYERS_CONF_VERSION = "2"
 
 BBFILES ?= ""
 
+# cause issue with gstreamer in poky distro build
+# ${KSD_THIRD_PARTY_LAYERS_DIR}/meta-petalinux
+
 BBLAYERS = " \
     ${KSD_POKY_DIR}/meta \
     ${KSD_POKY_DIR}/meta-poky \
     \
     ${KSD_USER_LAYERS_DIR}/meta-user-package \
+    ${KSD_USER_LAYERS_DIR}/meta-myboard-bsp \
     ${KSD_USER_LAYERS_DIR}/meta-kernel-customization \
     \
     ${KSD_META_OPENEMBEDDED_DIR}/meta-perl \
@@ -35,7 +35,6 @@ BBLAYERS = " \
     ${KSD_THIRD_PARTY_LAYERS_DIR}/meta-xilinx/meta-xilinx-standalone \
     ${KSD_THIRD_PARTY_LAYERS_DIR}/meta-xilinx/meta-xilinx-contrib \
     ${KSD_THIRD_PARTY_LAYERS_DIR}/meta-xilinx-tools \
-    ${KSD_THIRD_PARTY_LAYERS_DIR}/meta-petalinux \
     ${KSD_THIRD_PARTY_LAYERS_DIR}/meta-openamp \
     ${KSD_THIRD_PARTY_LAYERS_DIR}/meta-virtualization \
 "
