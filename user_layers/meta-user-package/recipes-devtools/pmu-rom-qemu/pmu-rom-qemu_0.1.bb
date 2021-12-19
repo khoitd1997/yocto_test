@@ -12,4 +12,4 @@ do_deploy () {
     install ${WORKDIR}/pmu-rom.elf ${DEPLOYDIR}
 }
 
-addtask deploy after do_compile
+addtask deploy after do_compile before do_build

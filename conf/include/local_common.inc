@@ -77,8 +77,6 @@ DEFAULTTUNE = "cortexa53"
 
 # u-boot settings
 
-# UBOOT_CONFIG # this is the defconfig name as well as the IMAGE_FSTYPES
-
 # TODO(kd): Move these to their own machine
 # SPL cannot be used by Zynqmp without some patches:
 # https://xilinx-wiki.atlassian.net/wiki/spaces/A/pages/18842574/U-Boot+Secondary+Program+Loader
@@ -92,7 +90,10 @@ PREFERRED_PROVIDER_qemu-native = "qemu-xilinx-native"
 PREFERRED_PROVIDER_nativesdk-qemu = "nativesdk-qemu-xilinx"
 
 PREFERRED_PROVIDER_virtual/kernel = "linux-xlnx"
-PREFERRED_PROVIDER_virtual/bootloader = "u-boot-xlnx"
+
+# PREFERRED_PROVIDER_virtual/bootloader = "u-boot-xlnx"
+PREFERRED_PROVIDER_virtual/bootloader = "u-boot"
+
 PREFERRED_PROVIDER_virtual/boot-bin = "xilinx-bootbin"
 
 PMU_FIRMWARE_DEPLOY_DIR = "${DEPLOY_DIR_IMAGE}"
