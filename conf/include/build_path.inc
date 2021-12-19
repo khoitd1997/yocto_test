@@ -18,6 +18,7 @@ KSD_THIRD_PARTY_LAYERS_DIR = "${KSD_REPO_ROOT_DIR}/third_party_layers"
 KSD_CACHE_DIR = "${KSD_REPO_ROOT_DIR}/cache"
 
 KSD_CONF_DIR = "${KSD_REPO_ROOT_DIR}/conf"
+# Used for outputting files like kernel config for easier inspection
 KSD_TMP_CONF_DIR = "${KSD_CONF_DIR}/tmp"
 
 KSD_META_OPENEMBEDDED_DIR = "${KSD_THIRD_PARTY_LAYERS_DIR}/meta-openembedded"
