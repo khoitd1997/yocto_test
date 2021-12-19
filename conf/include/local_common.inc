@@ -55,8 +55,14 @@ DL_DIR = "${KSD_CACHE_DIR}/dl"
 BB_GENERATE_MIRROR_TARBALLS = "1"
 CACHE = "${KSD_CACHE_DIR}/bitbake_cache"
 
-IMAGE_FSTYPES = "ext4"
-IMAGE_FSTYPES_remove = "tar.bz2"
+INITRAMFS_FSTYPES = "cpio.gz"
+INITRAMFS_IMAGE = "image-initramfs"
+
+KERNEL_ALT_IMAGETYPE += " fitImage "
+KERNEL_CLASSES += " kernel-fitimage "
+
+# unit is KBytes
+INITRAMFS_MAXSIZE = "512000"
 
 EXTRA_IMAGE_FEATURES_remove = "ssh-server-dropbear"
 
@@ -64,6 +70,8 @@ EXTRA_IMAGE_FEATURES_remove = "ssh-server-dropbear"
 
 # KCONFIG_CONFIG_COMMAND = "xconfig"
 
+# NOTE: Seems like tools are added to PATH using vivado.bbclass
+# seems pretty simple, seems like most of the code is to check if they are there
 XILINX_VER_MAIN = "2020.1"
 XILINX_VIVADO_DESIGN_SUIT = "/tools/Xilinx/Vivado/2020.1"
 
@@ -85,6 +93,8 @@ SPL_BINARY_${MACHINE} = ""
 SOC_VARIANT = "cg"
 
 IMAGE_INSTALL_append = " pmu-rom-qemu "
+
+EXTRA_IMAGEDEPENDS += " misc-task "
 
 PREFERRED_PROVIDER_qemu-native = "qemu-xilinx-native"
 PREFERRED_PROVIDER_nativesdk-qemu = "nativesdk-qemu-xilinx"

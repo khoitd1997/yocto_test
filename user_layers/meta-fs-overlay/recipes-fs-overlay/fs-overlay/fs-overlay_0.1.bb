@@ -12,3 +12,5 @@ do_install() {
 
     install ${WORKDIR}/hello.txt ${D}${sysconfdir}
 }
+
+FILES_${PN} += "${sysconfdir}/hello.txt"
