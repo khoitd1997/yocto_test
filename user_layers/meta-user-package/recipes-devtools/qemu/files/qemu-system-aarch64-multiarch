@@ -54,15 +54,12 @@ if (mbtype == 'PMU' and os.path.exists(PMU_rom)) or mbtype == 'PLM':
     print(f"\nAPU bin: {apu_bin}\n")
 
     # Invoke QEMU pmu instance
-    pmu_log_fd = os.open('/home/kd/yocto_test/pmu_log.txt', os.O_RDWR)
-    process_pmu = subprocess.Popen(mb_cmd, shell=True, stdout=pmu_log_fd, stderr=subprocess.STDOUT)
+    process_pmu = subprocess.Popen(mb_cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
 
     if process_pmu.poll():
         error_msg = '\nQEMU PMU instance failed:\n%s' % process_pmu.stderr.read().decode()
 
     APU_args.insert(0, apu_bin)
-    with open("/home/kd/yocto_test/log.txt", "w") as log_file:
-        log_file.write('\n'.join(APU_args))
     os.execv(apu_bin, APU_args)
 else:
     if mbtype == 'PMU':
