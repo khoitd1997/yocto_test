@@ -94,18 +94,6 @@ IMAGE_INSTALL_append = " haveged "
 
 EXTRA_IMAGEDEPENDS += " misc-task "
 
-PREFERRED_PROVIDER_qemu-native = "qemu-xilinx-native"
-PREFERRED_PROVIDER_nativesdk-qemu = "nativesdk-qemu-xilinx"
-
-PREFERRED_PROVIDER_virtual/kernel = "linux-yocto"
-PREFERRED_VERSION_virtual/kernel = "5.2"
-# PREFERRED_PROVIDER_virtual/kernel = "linux-xlnx"
-
-# PREFERRED_PROVIDER_virtual/bootloader = "u-boot-xlnx"
-PREFERRED_PROVIDER_virtual/bootloader = "u-boot"
-
-PREFERRED_PROVIDER_virtual/boot-bin = "xilinx-bootbin"
-
 PMU_FIRMWARE_DEPLOY_DIR = "${DEPLOY_DIR_IMAGE}"
 PMU_FIRMWARE_IMAGE_NAME = "pmu-firmware-${MACHINE}"
 
