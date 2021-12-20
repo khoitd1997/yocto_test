@@ -55,12 +55,6 @@ DL_DIR = "${KSD_CACHE_DIR}/dl"
 BB_GENERATE_MIRROR_TARBALLS = "1"
 CACHE = "${KSD_CACHE_DIR}/bitbake_cache"
 
-INITRAMFS_FSTYPES = "cpio.gz"
-INITRAMFS_IMAGE = "image-initramfs"
-
-KERNEL_ALT_IMAGETYPE += " fitImage "
-KERNEL_CLASSES += " kernel-fitimage "
-
 # unit is KBytes
 INITRAMFS_MAXSIZE = "512000"
 
@@ -116,10 +110,6 @@ YAML_DT_BOARD_FLAGS = "{BOARD zcu102-reva}"
 
 HDF_BASE = "file://"
 HDF_PATH = "${KSD_XSA_DIR}/hardware_description.xsa"
-
-IMAGE_BOOT_FILES_remove = "${KERNEL_IMAGETYPE}-zynqmp-zcu102-rev1.0.dtb"
-IMAGE_BOOT_FILES_append = " ${MACHINE}-system.dtb"
-
 
 BIF_FILE_PATH = "${KSD_TMP_CONF_DIR}/linux.bif"
 BIF_PARTITION_ATTR_append = " bitstream "
