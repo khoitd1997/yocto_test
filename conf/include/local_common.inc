@@ -15,7 +15,6 @@ MACHINE = "my-zcu102-zynqmp"
 # MACHINE = "qemuzynq"
 # MACHINE = "zynqmp-generic"
 
-# DISTRO = "petalinux"
 DISTRO = "poky"
 
 PACKAGE_CLASSES ?= "package_ipk"
@@ -25,8 +24,6 @@ SDKMACHINE = "x86_64"
 USER_CLASSES_append = "buildstats image-mklibs image-prelink"
 
 PATCHRESOLVE = "noop"
-
-# PACKAGECONFIG_append_pn-qemu-system-native = " sdl"
 
 CONF_VERSION = "1"
 
@@ -64,10 +61,14 @@ EXTRA_IMAGE_FEATURES_remove = "ssh-server-dropbear"
 
 # KCONFIG_CONFIG_COMMAND = "xconfig"
 
+# set empty so that xsct isn't downloaded from remote
+# based on observations from xsct-tarball.bbclass
+XSCT_TARGETS = ""
+
 # NOTE: Seems like tools are added to PATH using vivado.bbclass
-# seems pretty simple, seems like most of the code is to check if they are there
 XILINX_VER_MAIN = "2020.1"
-XILINX_VIVADO_DESIGN_SUIT = "/tools/Xilinx/Vivado/2020.1"
+XILINX_VIVADO_DESIGN_SUIT = "/tools/Xilinx/Vivado/${XILINX_VER_MAIN}"
+XILINX_SDK_TOOLCHAIN = "/tools/Xilinx/Vitis/${XILINX_VER_MAIN}"
 
 # already set in zcu102-zynqmp.conf
 # PMU_FIRMWARE_DEPLOY_DIR = "${DEPLOY_DIR_IMAGE}"
