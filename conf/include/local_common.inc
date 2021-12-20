@@ -15,7 +15,7 @@ MACHINE = "my-zcu102-zynqmp"
 # MACHINE = "qemuzynq"
 # MACHINE = "zynqmp-generic"
 
-DISTRO = "poky"
+DISTRO = "my-distro"
 
 PACKAGE_CLASSES ?= "package_ipk"
 
