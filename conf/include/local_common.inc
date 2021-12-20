@@ -88,6 +88,9 @@ SOC_VARIANT = "cg"
 
 IMAGE_INSTALL_append = " pmu-rom-qemu "
 
+# entropy generator to make sure boot-up doesn't hang
+IMAGE_INSTALL_append = " haveged "
+
 EXTRA_IMAGEDEPENDS += " misc-task "
 
 PREFERRED_PROVIDER_qemu-native = "qemu-xilinx-native"
