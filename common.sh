@@ -136,9 +136,7 @@ function util_show_xconfig {
 
     source_oe_init_script
 
-    bitbake -c menuconfig "${1}"
-
-    # bitbake -c xconfig virtual/kernel
+    bitbake -c xconfig "${1}"
 
     cd "${curr_pwd}"
 }
@@ -194,19 +192,18 @@ function build_incremental_kernel {
 
 ### UBOOT RELATED FUNCTIONS ###
 function show_uboot_xconfig {
-    util_show_xconfig u-boot-xlnx
+    util_show_xconfig virtual/bootloader
 }
-# TODO(kd): Implement for u-boot
 function generate_uboot_defconfig {
-    util_generate_defconfig u-boot-xlnx
+    util_generate_defconfig virtual/bootloader
 }
 # TODO(kd): Check this one
 function generate_uboot_cfg_fragment {
-    util_generate_cfg_fragment u-boot-xlnx
+    util_generate_cfg_fragment virtual/bootloader
 }
 
 function build_incremental_uboot {
-    util_build_incremental u-boot-xlnx
+    util_build_incremental virtual/bootloader
 }
 
 # TODO(kd): Devtool workflow for kernel
