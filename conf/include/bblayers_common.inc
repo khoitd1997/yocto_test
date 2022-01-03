@@ -29,8 +29,6 @@ BBLAYERS = " \
     ${KSD_META_OPENEMBEDDED_DIR}/meta-initramfs \
     ${KSD_META_OPENEMBEDDED_DIR}/meta-oe \
     \
-    ${KSD_THIRD_PARTY_LAYERS_DIR}/meta-qt5 \
-    \
     ${KSD_THIRD_PARTY_LAYERS_DIR}/meta-xilinx/meta-xilinx-bsp \
     ${KSD_THIRD_PARTY_LAYERS_DIR}/meta-xilinx/meta-xilinx-pynq \
     ${KSD_THIRD_PARTY_LAYERS_DIR}/meta-xilinx/meta-xilinx-standalone \
