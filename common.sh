@@ -50,14 +50,11 @@ function print_important_message {
 }
 
 function clean_all {
-    echo "Cleaning yocto build"
-    rm -rf ${poky_build_dir} ${cache_dir}
-    echo "Finished cleaning yocto build"
+    rm -rf "${poky_build_dir}" "${cache_dir}"
 }
 
-function start_toaster {
-    source toaster stop ${toaster_args}
-    source toaster start ${toaster_args}
+function clean_sstate {
+    rm -rf "${poky_build_dir}" "${sstate_dir}"
 }
 
 # use "-q" option to have stdout(but not stderr) directed to /dev/null
@@ -82,11 +79,11 @@ function source_oe_init_script {
 function init_repo {
     local curr_pwd=${PWD}
 
-    cd ${common_script_dir}
+    cd "${common_script_dir}"
     git submodule init
     git submodule update
 
-    cd ${curr_pwd}
+    cd "${curr_pwd}"
 }
 
 # turn on variables to help debugging the Yocto buildsystem easier
@@ -99,7 +96,7 @@ function open_recipe_work_folder {
     local curr_pwd=${PWD}
     local recipe_name="${1}"
 
-    cd ${poky_work_dir}
+    cd "${poky_work_dir}"
     echo "Searching in: ${poky_work_dir}"
     local res=$(find . -maxdepth 2 -type d -name "${recipe_name}")
 
@@ -110,24 +107,24 @@ function open_recipe_work_folder {
         code ${res}
     fi
 
-    cd ${curr_pwd}
+    cd "${curr_pwd}"
 }
 
 function set_build_config {
     local build_config="${1}"
 
-    mkdir -p ${poky_build_conf_dir}
-    rm -rf ${poky_build_conf_dir}/*
+    mkdir -p "${poky_build_conf_dir}"
+    rm -rf "${poky_build_conf_dir}/*"
 
-    ln -sf ${custom_conf_dir}/${build_config}/* ${poky_build_conf_dir}
-    ln -sf ${custom_conf_dir}/include/* ${poky_build_conf_dir}
+    ln -sf "${custom_conf_dir}/${build_config}/*" "${poky_build_conf_dir}"
+    ln -sf "${custom_conf_dir}/include/*" "${poky_build_conf_dir}"
 
-    echo "KSD_CURR_BUILD_CONFIG=${build_config}" > ${build_var_storage_file_path}
+    echo "KSD_CURR_BUILD_CONFIG=${build_config}" > "${build_var_storage_file_path}"
 }
 
 function get_build_config {
     if [ -f "${build_var_storage_file_path}" ]; then
-        source ${build_var_storage_file_path}
+        source "${build_var_storage_file_path}"
         get_build_config_retval=${KSD_CURR_BUILD_CONFIG}
     else
         get_build_config_retval=""
@@ -143,7 +140,7 @@ function util_show_xconfig {
 
     # bitbake -c xconfig virtual/kernel
 
-    cd ${curr_pwd}
+    cd "${curr_pwd}"
 }
 
 function util_generate_defconfig {
@@ -153,7 +150,7 @@ function util_generate_defconfig {
 
     bitbake -c savedefconfig "${1}"
 
-    cd ${curr_pwd}
+    cd "${curr_pwd}"
 }
 
 # TODO: Verify if the comment is true for u-boot
@@ -168,7 +165,7 @@ function util_generate_cfg_fragment {
 
     bitbake -c diffconfig "${1}"
 
-    cd ${curr_pwd}
+    cd "${curr_pwd}"
 }
 
 function util_build_incremental {
@@ -178,7 +175,7 @@ function util_build_incremental {
 
     bitbake "${1}"
 
-    cd ${curr_pwd}
+    cd "${curr_pwd}"
 }
 
 ### KERNEL RELATED FUNCTIONS ###

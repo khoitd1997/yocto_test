@@ -4,11 +4,10 @@
 set -e
 
 script_dir="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
-source ${script_dir}/common.sh
+source "${script_dir}/common.sh"
 
-# NOTE: bitbake sometimes timeout or do weird things
-# wiping the build directories sometimes fix that
 echo "REMOVING YOCTO BUILD DIRECTORY"
-rm -rf ${poky_build_dir}
+rm -rf "${poky_build_dir}"
 
-source ${script_dir}/build.sh
+echo "STARTING BUILD"
+source "${script_dir}/build.sh"
