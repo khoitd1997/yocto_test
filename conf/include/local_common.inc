@@ -11,7 +11,8 @@ KSD_BUILD_NAME ?= "defaultname"
 
 # MACHINE = "qemuarm64"
 # MACHINE = "zcu102-zynqmp"
-MACHINE = "my-zcu102-zynqmp"
+# MACHINE = "my-zcu102-zynqmp"
+MACHINE = "my-ultra96-zynqmp"
 # MACHINE = "qemuzynq"
 # MACHINE = "zynqmp-generic"
 
@@ -103,7 +104,7 @@ YAML_SERIAL_CONSOLE_STDOUT = "psu_uart_0"
 YAML_DT_BOARD_FLAGS = "{BOARD zcu102-reva}"
 
 HDF_BASE = "file://"
-HDF_PATH = "${KSD_XSA_DIR}/hardware_description.xsa"
+HDF_PATH = "${KSD_XSA_DIR}/ULTRA96V2.xsa"
 
 BIF_FILE_PATH = "${KSD_TMP_CONF_DIR}/linux.bif"
 BIF_PARTITION_ATTR_append = " bitstream "
