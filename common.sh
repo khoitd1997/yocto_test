@@ -116,8 +116,8 @@ function set_build_config {
     mkdir -p "${poky_build_conf_dir}"
     rm -rf "${poky_build_conf_dir}/*"
 
-    ln -sf "${custom_conf_dir}/${build_config}/*" "${poky_build_conf_dir}"
-    ln -sf "${custom_conf_dir}/include/*" "${poky_build_conf_dir}"
+    ln -sf "${custom_conf_dir}/${build_config}"/* "${poky_build_conf_dir}"
+    ln -sf "${custom_conf_dir}/include"/* "${poky_build_conf_dir}"
 
     echo "KSD_CURR_BUILD_CONFIG=${build_config}" > "${build_var_storage_file_path}"
 }
