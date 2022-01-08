@@ -1,5 +1,4 @@
 #!/bin/bash
-# Wipe the build directory(BUT NOT THE CACHE) and then do the build
 
 set -e
 
