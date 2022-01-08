@@ -4,7 +4,7 @@ LICENSE = "CLOSED"
 inherit deploy nopackages
 inherit terminal
 
-OE_TERMINAL_EXPORTS += ""
+OE_TERMINAL_EXPORTS += "MACHINE DEPLOY_DIR_IMAGE"
 
 do_configure[noexec] = "1"
 do_install[noexec] = "1"
@@ -21,9 +21,8 @@ do_deploy() {
 SRC_URI += " file://flash_image_script.sh "
 python do_flash() {
     script_path=f"{d.getVar('WORKDIR')}/flash_image_script.sh"
-    image_path=d.expand("${DEPLOY_DIR_IMAGE}/initramfs-image-${MACHINE}.tar.gz")
 
-    oe_terminal(f"bash '{script_path}' '{image_path}'", "Image Flash", d)
+    oe_terminal(f"bash '{script_path}'", "Image Flash", d)
 }
 
 addtask do_deploy after do_compile before do_build
