@@ -53,14 +53,6 @@ YAML_MAIN_MEMORY_CONFIG_my-ultra96-zynqmp ?= "psu_ddr_0"
 YAML_CONSOLE_DEVICE_CONFIG_my-ultra96-zynqmp ?= "psu_uart_1"
 
 YAML_DT_BOARD_FLAGS_my-ultra96-zynqmp ?= "{BOARD avnet-ultra96-rev1}"
-YAML_DT_BOARD_FLAGS_zcu102-zynqmp ?= "{BOARD zcu102-rev1.0}"
-YAML_DT_BOARD_FLAGS_zcu106-zynqmp ?= "{BOARD zcu106-reva}"
-YAML_DT_BOARD_FLAGS_zcu104-zynqmp ?= "{BOARD zcu104-revc}"
-YAML_DT_BOARD_FLAGS_zcu111-zynqmp ?= "{BOARD zcu111-reva}"
-YAML_DT_BOARD_FLAGS_zcu1275-zynqmp ?= "{BOARD zcu1275-revb}"
-YAML_DT_BOARD_FLAGS_zcu1285-zynqmp ?= "{BOARD zcu1285-reva}"
-YAML_DT_BOARD_FLAGS_zcu216-zynqmp ?= "{BOARD zcu216-reva}"
-YAML_DT_BOARD_FLAGS_zcu208-zynqmp ?= "{BOARD zcu208-reva}"
 
 YAML_OVERLAY_CUSTOM_DTS = "pl-final.dts"
 CUSTOM_PL_INCLUDE_DTSI ?= ""
@@ -92,7 +84,7 @@ do_deploy() {
 	done
 	for DTS_FILE in `ls *.dts.pp`; do
 		install -Dm 0644 ${B}/${DTS_FILE} ${DEPLOYDIR}/${DTB_BASE_NAME}.dts
-		ln -sfv ${DEPLOYDIR}/${DTB_BASE_NAME}.dts ${DEPLOYDIR}/system.dts
+		ln -sfv ${DTB_BASE_NAME}.dts ${DEPLOYDIR}/system.dts
 	done
 }
 

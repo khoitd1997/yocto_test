@@ -10,7 +10,6 @@ DEPENDS += " \
             dtc-native \
             "
 
-IMAGE_ROOTFS_SIZE = "8192"
 IMAGE_ROOTFS_EXTRA_SPACE = "0"
 
 SUMMARY = "An initramfs that basically functions as rootfs. This is different from core-image-minimal-initramfs.bb which functions like a traditional ramdisk on Ubuntu that does early boot preparation and then pass it onto the main rootfs."
@@ -246,6 +245,7 @@ fitimage_emit_section_config() {
 	ramdisk_line=""
 	setup_line=""
 	default_line=""
+    conf_name="${3%%.*}"
 
 	if [ -n "${2}" ]; then
 		conf_desc="Linux kernel"
@@ -261,8 +261,11 @@ fitimage_emit_section_config() {
 
 	if [ -n "${4}" ]; then
 		conf_desc="${conf_desc}${sep}ramdisk"
+		conf_name="${conf_name}_with_ramdisk"
 		sep=", "
 		ramdisk_line="ramdisk = \"ramdisk@${4}\";"
+    else
+		conf_name="${conf_name}_without_ramdisk"
 	fi
 
 	if [ -n "${5}" ]; then
@@ -271,12 +274,12 @@ fitimage_emit_section_config() {
 	fi
 
 	if [ "${6}" = "1" ]; then
-		default_line="default = \"conf@${3}\";"
+		default_line="default = \"conf@${conf_name}\";"
 	fi
 
 	cat << EOF >> ${1}
                 ${default_line}
-                conf@${3} {
+                conf@${conf_name} {
 			description = "${6} ${conf_desc}";
 			${kernel_line}
 			${fdt_line}
@@ -402,6 +405,8 @@ fitimage_assemble() {
 				fitimage_emit_section_config ${1} "" "${DTB}" "" "" "`expr ${counter} = ${dtbcount}`"
 			else
 				fitimage_emit_section_config ${1} "${kernelcount}" "${DTB}" "${ramdiskcount}" "${setupcount}" "`expr ${counter} = ${dtbcount}`"
+                # emit a config without ramdisk
+                fitimage_emit_section_config ${1} "${kernelcount}" "${DTB}" "" "${setupcount}" ""
 			fi
 			counter=`expr ${counter} + 1`
 		done
@@ -454,6 +459,7 @@ do_create_fit_image() {
     assemble_fitimage_initramfs
 }
 addtask do_create_fit_image before do_image_wic
+do_build[depends] += "${PN}:do_create_fit_image"
 
 do_image_wic[depends] += "${PN}:do_create_fit_image"
 

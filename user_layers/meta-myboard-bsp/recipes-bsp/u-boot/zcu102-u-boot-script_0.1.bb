@@ -7,6 +7,8 @@ DEPENDS = "u-boot-mkimage-native"
 
 inherit deploy nopackages
 
+PROVIDES = "virtual/u-boot-script"
+
 INHIBIT_DEFAULT_DEPS = "1"
 
 COMPATIBLE_MACHINE ?= "^$"

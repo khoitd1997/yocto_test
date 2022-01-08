@@ -2,7 +2,6 @@
 
 set -e
 
-
 err_report() {
     echo "Flash failed!"
     echo 'Press any key to continue... '

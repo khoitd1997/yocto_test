@@ -5,6 +5,8 @@ LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/MIT;md5=0835ade698e0bcf8506ecda
 
 DEPENDS = "u-boot-mkimage-native"
 
+PROVIDES = "virtual/u-boot-script"
+
 inherit deploy nopackages
 
 INHIBIT_DEFAULT_DEPS = "1"

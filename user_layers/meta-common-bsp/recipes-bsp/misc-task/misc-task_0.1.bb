@@ -29,6 +29,7 @@ python do_flash() {
 }
 addtask do_flash after do_deploy
 do_flash[nostamp] = "1"
+do_flash[depends] += "initramfs-image:do_create_fit_image"
 
 python do_vscode_to_deploy_dir() {
     oe_terminal("code ${DEPLOY_DIR_IMAGE}", "Vscode", d)

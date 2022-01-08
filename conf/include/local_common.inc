@@ -104,9 +104,8 @@ YAML_SERIAL_CONSOLE_STDOUT = "psu_uart_0"
 YAML_DT_BOARD_FLAGS = "{BOARD zcu102-reva}"
 
 HDF_BASE = "file://"
-HDF_PATH = "${KSD_XSA_DIR}/ULTRA96V2.xsa"
+# HDF_PATH = "${KSD_XSA_DIR}/ULTRA96V2.xsa"
+# custom xsa
+HDF_PATH = "${KSD_XSA_DIR}/ULTRA96V2_wrapper.xsa"
 
 BIF_FILE_PATH = "${DEPLOY_DIR_IMAGE}/linux.bif"
-
-# Don't use SPL with u-boot
-SPL_BINARY = ""

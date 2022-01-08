@@ -9,16 +9,17 @@ BBFILES ?= ""
 # cause issue with gstreamer in poky distro build
 # ${KSD_THIRD_PARTY_LAYERS_DIR}/meta-petalinux
 
-# ${KSD_USER_LAYERS_DIR}/meta-myboard-bsp
 BBLAYERS = " \
     ${KSD_POKY_DIR}/meta \
     ${KSD_POKY_DIR}/meta-poky \
     \
     ${KSD_USER_LAYERS_DIR}/meta-user-package \
     ${KSD_USER_LAYERS_DIR}/meta-common-bsp \
-    ${KSD_USER_LAYERS_DIR}/meta-my-ultra96 \
     ${KSD_USER_LAYERS_DIR}/meta-my-distro \
     ${KSD_USER_LAYERS_DIR}/meta-kernel-customization \
+    \
+    ${KSD_USER_LAYERS_DIR}/meta-my-ultra96 \
+    ${KSD_USER_LAYERS_DIR}/meta-myboard-bsp \
     \
     ${KSD_META_OPENEMBEDDED_DIR}/meta-perl \
     ${KSD_META_OPENEMBEDDED_DIR}/meta-python \
