@@ -106,8 +106,7 @@ YAML_DT_BOARD_FLAGS = "{BOARD zcu102-reva}"
 HDF_BASE = "file://"
 HDF_PATH = "${KSD_XSA_DIR}/ULTRA96V2.xsa"
 
-BIF_FILE_PATH = "${KSD_TMP_CONF_DIR}/linux.bif"
-BIF_PARTITION_ATTR_append = " bitstream "
+BIF_FILE_PATH = "${DEPLOY_DIR_IMAGE}/linux.bif"
 
 # Don't use SPL with u-boot
 SPL_BINARY = ""
