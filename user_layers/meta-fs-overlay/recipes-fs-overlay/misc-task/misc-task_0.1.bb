@@ -19,13 +19,19 @@ do_deploy() {
 }
 
 SRC_URI += " file://flash_image_script.sh "
+
+addtask do_deploy after do_compile before do_build
+
 python do_flash() {
     script_path=f"{d.getVar('WORKDIR')}/flash_image_script.sh"
 
     oe_terminal(f"bash '{script_path}'", "Image Flash", d)
 }
-
-addtask do_deploy after do_compile before do_build
-
 addtask do_flash after do_deploy
 do_flash[nostamp] = "1"
+
+python do_vscode_to_deploy_dir() {
+    oe_terminal("code ${DEPLOY_DIR_IMAGE}", "Vscode", d)
+}
+addtask do_vscode_to_deploy_dir after do_deploy
+do_vscode_to_deploy_dir[nostamp] = "1"
