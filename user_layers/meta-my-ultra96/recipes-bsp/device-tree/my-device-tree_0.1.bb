@@ -87,8 +87,12 @@ DTB_BASE_NAME[vardepsexclude] = "DATETIME"
 do_deploy() {
 	for DTB_FILE in `ls *.dtb *.dtbo`; do
 		install -Dm 0644 ${B}/${DTB_FILE} ${DEPLOYDIR}/${DTB_BASE_NAME}.${DTB_FILE#*.}
-		ln -sf ${DTB_BASE_NAME}.${DTB_FILE#*.} ${DEPLOYDIR}/${MACHINE}-system.${DTB_FILE#*.}
-		ln -sf ${DTB_BASE_NAME}.${DTB_FILE#*.} ${DEPLOYDIR}/system.${DTB_FILE#*.}
+		ln -sfv ${DTB_BASE_NAME}.${DTB_FILE#*.} ${DEPLOYDIR}/${MACHINE}-system.${DTB_FILE#*.}
+		ln -sfv ${DTB_BASE_NAME}.${DTB_FILE#*.} ${DEPLOYDIR}/system.${DTB_FILE#*.}
+	done
+	for DTS_FILE in `ls *.dts.pp`; do
+		install -Dm 0644 ${B}/${DTS_FILE} ${DEPLOYDIR}/${DTB_BASE_NAME}.dts
+		ln -sfv ${DEPLOYDIR}/${DTB_BASE_NAME}.dts ${DEPLOYDIR}/system.dts
 	done
 }
 
