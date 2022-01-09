@@ -1,0 +1,6 @@
+define KFEATURE_DESCRIPTION "USB Ethernet"
+define KFEATURE_COMPATIBILITY all
+
+define KTYPE standard
+
+kconf hardware usb_ethernet.cfg

@@ -2,7 +2,7 @@
 # one exmaple is
 # https://git.yoctoproject.org/cgit/cgit.cgi/yocto-kernel-cache/tree/features/netfilter
 # syntax reference: 
-# https://www.yoctoproject.org/docs/1.6.1/kernel-dev/kernel-dev.html#scc-reference
+# https://www.yoctoproject.org/docs/latest/kernel-dev/kernel-dev.html#scc-reference
 
 define KFEATURE_DESCRIPTION "Test Feature"
 define KFEATURE_COMPATIBILITY all

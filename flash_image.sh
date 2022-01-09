@@ -8,3 +8,6 @@ source "${script_dir}/common.sh"
 source_oe_init_script
 
 bitbake -c flash misc-task
+
+echo ""
+echo "DONE FLASHING IMAGE"
