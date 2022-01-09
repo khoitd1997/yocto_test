@@ -90,8 +90,8 @@ SOC_VARIANT = "cg"
 
 IMAGE_INSTALL_append = " pmu-rom-qemu "
 
-# entropy generator to make sure boot-up doesn't hang
-IMAGE_INSTALL_append = " haveged "
+# haveged seems to have problems with postinstall script for systemd
+# IMAGE_INSTALL_append = " haveged "
 
 EXTRA_IMAGEDEPENDS += " misc-task "
 
@@ -109,3 +109,8 @@ HDF_BASE = "file://"
 HDF_PATH = "${KSD_XSA_DIR}/ULTRA96V2_wrapper.xsa"
 
 BIF_FILE_PATH = "${DEPLOY_DIR_IMAGE}/linux.bif"
+
+# for using init instead of systemd
+# DISTRO_FEATURES_append = " sysvinit "
+
+DISTRO_FEATURES_append = " zeroconf systemd usbhost "
