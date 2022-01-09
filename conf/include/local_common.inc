@@ -114,3 +114,7 @@ BIF_FILE_PATH = "${DEPLOY_DIR_IMAGE}/linux.bif"
 # DISTRO_FEATURES_append = " sysvinit "
 
 DISTRO_FEATURES_append = " zeroconf systemd usbhost "
+# need this to specify that only systemd should be used, otw, sysvinit is also used
+VIRTUAL-RUNTIME_init_manager = "systemd"
+
+IMAGE_INSTALL_append = " udev "
