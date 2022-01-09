@@ -14,11 +14,29 @@ PKG_CONFIG_SYSROOT_DIR = ""
 
 KCONFIG_XCONFIG_ROOTDIR ??= "${B}"
 
+# specify where to store config files are reference when diffing against
+# when generating fragment files
+KCONFIG_CACHE_DIR ?= "${B}"
+CONFIG_CACHE_PATH ?= "${KCONFIG_CACHE_DIR}/.config_${P}_${MACHINE}"
+
+DEFCONFIG_SAVE_PATH ?= "${KCONFIG_CACHE_DIR}/defconfig_${P}_${MACHINE}"
+
+# NOTE: This function is heavily based on do_menuconfig from cml1.bbclass
 python do_xconfig() {
     import shutil
 
-    config = os.path.join(d.getVar('KCONFIG_XCONFIG_ROOTDIR'), ".config")
+    if d.getVar('KCONFIG_CACHE_DIR') == "":
+        raise RuntimeError("Error: KCONFIG_CACHE_DIR is empty!")
+
+    # instead of using the previous .config file as reference for diff like menuconfig, 
+    # we use the one cached
+    config = d.getVar('CONFIG_CACHE_PATH')
     configorig = os.path.join(d.getVar('KCONFIG_XCONFIG_ROOTDIR'), ".config.orig")
+
+    # .config isn't cached yet so generate one
+    if not os.path.exists(config):
+        bb.plain("No saved .config found, generating one from current .config")
+        shutil.copy(".config", config) 
 
     try:
         mtime = os.path.getmtime(config)
@@ -48,12 +66,13 @@ do_xconfig[dirs] = "${KCONFIG_XCONFIG_ROOTDIR}"
 addtask xconfig after do_configure
 
 do_savedefconfig_append() {
-    local defconfig_dest_path="${KSD_TMP_CONF_DIR}/${KSD_BUILD_ID_STR}_defconfig"
-	bbplain "Copying kernel defconfig to:\n${defconfig_dest_path}\n"
-    cp ${B}/defconfig ${defconfig_dest_path}
+    bbplain "Saving defconfig to:\n${DEFCONFIG_SAVE_PATH}\n"
+    cp ${B}/defconfig ${DEFCONFIG_SAVE_PATH}
 }
 
 python do_diffconfig_append() {
+    import shutil
+
     # TODO(kd): Rethink the workflow of this
     # if fragment exists then it means that there has been changes
     # so copy the fragment, otw, truncate the fragment file
@@ -61,11 +80,20 @@ python do_diffconfig_append() {
         d.getVar('KSD_TMP_CONF_DIR'), 
         f"{d.getVar('KSD_BUILD_ID_STR')}-fragment.cfg"
     )
+
+    bb.plain(f"\nCaching .config\n")
+    shutil.copy(f"{d.getVar('B')}/.config", d.getVar('CONFIG_CACHE_PATH'))
+
     if os.path.exists(fragment):
         shutil.copy(fragment, destfragment)
-        bb.plain("Config fragment has been copied to:\n %s" % destfragment)
+        bb.plain("Config fragment location:\n %s" % destfragment)
     elif os.path.exists(destfragment):
-        bb.plain("No difference in config so wiping out the current fragment\n")
+        bb.warn("\nNo difference in config so wiping out the current fragment\n")
         with open(destfragment, 'r+') as f:
             f.truncate(0)
+
+    # in do_diffconfig, after the dif is generated, they overwrite .config with the cached one
+    # while a little unintuitive, it's best practice since it forces user to immediately process
+    # the just generated fragment
+    bb.warn("\n.config HAS BEEN RESET TO STATE THAT DOES NOT CONTAIN THE CURRENT GENERATED FRAGMENT\n")
 }
