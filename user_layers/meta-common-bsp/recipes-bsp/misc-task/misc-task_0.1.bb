@@ -4,7 +4,7 @@ LICENSE = "CLOSED"
 inherit deploy nopackages
 inherit terminal
 
-OE_TERMINAL_EXPORTS += "MACHINE DEPLOY_DIR_IMAGE"
+OE_TERMINAL_EXPORTS += "MACHINE DEPLOY_DIR_IMAGE BOOT_PARTITION_FILES"
 
 do_configure[noexec] = "1"
 do_install[noexec] = "1"
@@ -18,7 +18,10 @@ do_deploy() {
     ln -sfv ${DEPLOY_DIR_IMAGE} ${symlink_dest}
 }
 
-SRC_URI += " file://flash_image_script.sh "
+SRC_URI += " \
+    file://flash_image_script.sh \
+    file://flash_raw_image_script.sh \
+"
 
 addtask do_deploy after do_compile before do_build
 
@@ -30,6 +33,15 @@ python do_flash() {
 addtask do_flash after do_deploy
 do_flash[nostamp] = "1"
 do_flash[depends] += "initramfs-image:do_create_fit_image"
+
+python do_flash_raw() {
+    script_path=f"{d.getVar('WORKDIR')}/flash_raw_image_script.sh"
+
+    oe_terminal(f"bash '{script_path}'", "Raw Image Flash", d)
+}
+addtask do_flash_raw after do_deploy
+do_flash_raw[nostamp] = "1"
+do_flash_raw[depends] += "initramfs-image:do_image_wic"
 
 python do_vscode_to_deploy_dir() {
     oe_terminal("code ${DEPLOY_DIR_IMAGE}", "Vscode", d)

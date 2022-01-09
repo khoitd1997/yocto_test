@@ -18,7 +18,7 @@ rootfs_flash_dir="/media/${USER}/rootfs"
 
 find "${boot_flash_dir}" -mindepth 1 -name . -o -prune -exec rm -rf -- {} +
 cd "${DEPLOY_DIR_IMAGE}"
-cp -v boot.bin boot.scr "fitImage-initramfs" "${boot_flash_dir}"
+cp -v ${BOOT_PARTITION_FILES} "${boot_flash_dir}"
 
 sudo find "${rootfs_flash_dir}" -mindepth 1 -name . -o -prune -exec rm -rf -- {} +
 sudo tar -xaf "${image_path}" -C "${rootfs_flash_dir}"
