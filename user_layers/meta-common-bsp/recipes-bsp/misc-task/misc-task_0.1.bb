@@ -18,15 +18,10 @@ do_deploy() {
     ln -sfv ${DEPLOY_DIR_IMAGE} ${symlink_dest}
 }
 
-SRC_URI += " \
-    file://flash_image_script.sh \
-    file://flash_raw_image_script.sh \
-"
-
 addtask do_deploy after do_compile before do_build
 
 python do_flash() {
-    script_path=f"{d.getVar('WORKDIR')}/flash_image_script.sh"
+    script_path=f"{d.getVar('THISDIR')}/files/flash_image_script.sh"
 
     oe_terminal(f"bash '{script_path}'", "Image Flash", d)
 }
@@ -35,7 +30,7 @@ do_flash[nostamp] = "1"
 do_flash[depends] += "initramfs-image:do_create_fit_image"
 
 python do_flash_raw() {
-    script_path=f"{d.getVar('WORKDIR')}/flash_raw_image_script.sh"
+    script_path=f"{d.getVar('THISDIR')}/files/flash_raw_image_script.sh"
 
     oe_terminal(f"bash '{script_path}'", "Raw Image Flash", d)
 }
