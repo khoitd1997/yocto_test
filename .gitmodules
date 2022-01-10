@@ -1,6 +1,6 @@
 [submodule "poky"]
 	path = poky
-	url = git://git.yoctoproject.org/poky
+	url = https://git.yoctoproject.org/poky
 [submodule "third_party_layers/meta-qt5"]
 	path = third_party_layers/meta-qt5
 	url = https://github.com/meta-qt5/meta-qt5.git
