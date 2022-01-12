@@ -1,2 +1,0 @@
-# the download link doesn't work with git protocol so use http instead
-SRC_URI := "${@'${SRC_URI}'.replace('git://git.eclipse.org/gitroot/tcf/org.eclipse.tcf.agent', 'git://git.eclipse.org/r/tcf/org.eclipse.tcf.agent.git;protocol=https')}"
