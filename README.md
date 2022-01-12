@@ -26,6 +26,10 @@ Add custom files: https://dornerworks.com/blog/including-custom-executables-and-
 
 Unlike Buildroot, Yocto rebuild mechanisms is a little smarter about when to rebuild, since even all the overlay files need to be tracked in fs-overlay_0.1.bb, Yocto knows when anything changes
 
+## Forked Layers
+
+There are some layers that need to be modified from upstream, they are located in `third_party_layers/forked_layer`, they are usually extracted tarball of a release instead of a git submodule like most third party layers
+
 ### Build time Result
 
 `bitbake world` is the command to build all the possible recipes in Yocto. This is used to estimate how much size we would need if we are to host a mirror serving both src and sstate
