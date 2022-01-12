@@ -19,4 +19,3 @@ vscode-bitbake-build/
 /conf/tmp/*
 !/conf/tmp/.gitkeep
 .build_var_storage
-user_layers/meta-user-package/recipes-devtools/pmu-rom-qemu/files/pmu-rom.elf
