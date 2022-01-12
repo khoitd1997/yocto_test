@@ -14,4 +14,4 @@ CYAN='\033[0;36m'
 NC='\033[0m'
 printf "${CYAN}Use 'Ctrl+a c' to get to QEMU shell, then enter 'quit' to quit${NC}"
 runqemu \
-    my-zcu102-zynqmp ${default_bb_image_target} nographic serial slirp
+    zcu102-zynqmp ${default_bb_image_target} slirp
