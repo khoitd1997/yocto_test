@@ -17,7 +17,8 @@ sstate_dir="${cache_dir}/sstate"
 
 dl_dir="${cache_dir}/dl"
 
-default_bb_image_target="initramfs-image"
+# default_bb_image_target="initramfs-image"
+default_bb_image_target="core-image-minimal"
 
 poky_dir="${common_script_dir}/poky"
 poky_build_dir="${poky_dir}/build"

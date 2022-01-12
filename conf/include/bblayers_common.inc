@@ -20,6 +20,14 @@ BBFILES ?= ""
 # ${KSD_META_OPENEMBEDDED_DIR}/meta-xfce 
 # ${KSD_META_OPENEMBEDDED_DIR}/meta-gnome
 # ${KSD_META_OPENEMBEDDED_DIR}/meta-initramfs
+# ${KSD_THIRD_PARTY_LAYERS_DIR}/forked_layer/meta-xilinx/meta-xilinx-bsp 
+# ${KSD_THIRD_PARTY_LAYERS_DIR}/forked_layer/meta-xilinx-tools 
+
+# ${KSD_USER_LAYERS_DIR}/meta-my-ultra96
+# ${KSD_USER_LAYERS_DIR}/meta-myboard-bsp
+
+# ${KSD_USER_LAYERS_DIR}/meta-my-distro
+# ${KSD_USER_LAYERS_DIR}/meta-kernel-customization
 
 BBLAYERS = " \
     ${KSD_POKY_DIR}/meta \
@@ -27,11 +35,7 @@ BBLAYERS = " \
     \
     ${KSD_USER_LAYERS_DIR}/meta-user-package \
     ${KSD_USER_LAYERS_DIR}/meta-common-bsp \
-    ${KSD_USER_LAYERS_DIR}/meta-my-distro \
-    ${KSD_USER_LAYERS_DIR}/meta-kernel-customization \
     \
-    ${KSD_USER_LAYERS_DIR}/meta-my-ultra96 \
-    ${KSD_USER_LAYERS_DIR}/meta-myboard-bsp \
     \
     ${KSD_META_OPENEMBEDDED_DIR}/meta-perl \
     ${KSD_META_OPENEMBEDDED_DIR}/meta-python \
@@ -41,8 +45,10 @@ BBLAYERS = " \
     ${KSD_META_OPENEMBEDDED_DIR}/meta-webserver \
     ${KSD_META_OPENEMBEDDED_DIR}/meta-oe \
     \
-    ${KSD_THIRD_PARTY_LAYERS_DIR}/meta-xilinx/meta-xilinx-bsp \
-    ${KSD_THIRD_PARTY_LAYERS_DIR}/meta-xilinx-tools \
+    ${KSD_THIRD_PARTY_LAYERS_DIR}/forked_layer/meta-openamp-xlnx-rel-v2021.2 \
+    ${KSD_THIRD_PARTY_LAYERS_DIR}/forked_layer/meta-xilinx-xlnx-rel-v2021.2/meta-xilinx-standalone \
+    ${KSD_THIRD_PARTY_LAYERS_DIR}/forked_layer/meta-xilinx-xlnx-rel-v2021.2/meta-xilinx-bsp \
+    ${KSD_THIRD_PARTY_LAYERS_DIR}/forked_layer/meta-xilinx-tools-xlnx-rel-v2021.2 \
 "
 
 BBLAYERS_NON_REMOVABLE ?= " \
