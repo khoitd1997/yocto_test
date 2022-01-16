@@ -2,3 +2,5 @@
 # so remove them, doesn't seem to affect any functionality
 EXTRA_OECONF_remove = "--with-suffix=${BPN}"
 EXTRA_OECONF_remove = "--meson=meson"
+
+DEPENDS += " pmu-rom-qemu " 

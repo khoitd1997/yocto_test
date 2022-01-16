@@ -13,4 +13,4 @@ jobs:
         run: |
           "${GITHUB_WORKSPACE}/install_deps.sh"
           "${GITHUB_WORKSPACE}/set_build_config.sh" debug
-          "${GITHUB_WORKSPACE}/build.sh "
+          "${GITHUB_WORKSPACE}/build.sh"

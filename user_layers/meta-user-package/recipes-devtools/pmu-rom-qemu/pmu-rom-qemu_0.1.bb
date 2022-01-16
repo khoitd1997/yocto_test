@@ -6,6 +6,9 @@ SECTION = "devel"
 
 LICENSE = "CLOSED"
 
+# NOTE: pmu-rom.elf can obtained from an extracted .bsp file
+# instruction:
+# https://github.com/Xilinx/meta-xilinx/blob/master/meta-xilinx-bsp/README.qemu.md
 SRC_URI = "file://pmu-rom.elf"
 
 do_deploy () {

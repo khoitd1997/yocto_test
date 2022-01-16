@@ -16,8 +16,8 @@ MACHINE = "my-zcu102-zynqmp"
 # MACHINE = "qemuzynq"
 # MACHINE = "zynqmp-generic"
 
-# DISTRO = "my-distro"
-DISTRO = "poky"
+DISTRO = "my-distro"
+# DISTRO = "poky"
 
 PACKAGE_CLASSES ?= "package_ipk"
 
@@ -54,14 +54,9 @@ DL_DIR = "${KSD_CACHE_DIR}/dl"
 BB_GENERATE_MIRROR_TARBALLS = "1"
 CACHE = "${KSD_CACHE_DIR}/bitbake_cache"
 
-# unit is KBytes
-INITRAMFS_MAXSIZE = "512000"
-
 EXTRA_IMAGE_FEATURES_remove = "ssh-server-dropbear"
 
 # KERNEL_FEATURES_append = "features/test_features/test.scc"
-
-# KCONFIG_CONFIG_COMMAND = "xconfig"
 
 # set empty so that xsct isn't downloaded from remote
 # based on observations from xsct-tarball.bbclass
@@ -72,37 +67,16 @@ XILINX_VER_MAIN = "2021.2"
 XILINX_VIVADO_DESIGN_SUIT = "/tools/Xilinx/Vivado/${XILINX_VER_MAIN}"
 XILINX_SDK_TOOLCHAIN = "/tools/Xilinx/Vitis/${XILINX_VER_MAIN}"
 
-# already set in zcu102-zynqmp.conf
-# PMU_FIRMWARE_DEPLOY_DIR = "${DEPLOY_DIR_IMAGE}"
-# PMU_FIRMWARE_IMAGE_NAME = "pmu-firmware-${MACHINE}"
-
 # Fix for Xilinx issue:
 # https://github.com/Xilinx/meta-xilinx/pull/24
-DEFAULTTUNE = "cortexa53"
-
-# u-boot settings
-
-# TODO(kd): Move these to their own machine
-# SPL cannot be used by Zynqmp without some patches:
-# https://xilinx-wiki.atlassian.net/wiki/spaces/A/pages/18842574/U-Boot+Secondary+Program+Loader
-SPL_BINARY_${MACHINE} = ""
-
-SOC_VARIANT = "cg"
-
-IMAGE_INSTALL_append = " pmu-rom-qemu "
+# DEFAULTTUNE = "cortexa53"
 
 # haveged seems to have problems with postinstall script for systemd
 # IMAGE_INSTALL_append = " haveged "
 
-# EXTRA_IMAGEDEPENDS += " misc-task "
-
-PMU_FIRMWARE_DEPLOY_DIR = "${DEPLOY_DIR_IMAGE}"
-PMU_FIRMWARE_IMAGE_NAME = "pmu-firmware-${MACHINE}"
+EXTRA_IMAGEDEPENDS += " misc-task "
 
 LICENSE_FLAGS_WHITELIST += " xilinx commercial "
-
-YAML_SERIAL_CONSOLE_STDOUT = "psu_uart_0"
-YAML_DT_BOARD_FLAGS = "{BOARD zcu102-reva}"
 
 HDF_BASE = "file://"
 # HDF_PATH = "${KSD_XSA_DIR}/ULTRA96V2.xsa"
@@ -110,8 +84,6 @@ HDF_BASE = "file://"
 # HDF_PATH = "${KSD_XSA_DIR}/ULTRA96V2_wrapper.xsa"
 #
 HDF_PATH = "${KSD_XSA_DIR}/zcu102_2021_2.xsa"
-
-# BIF_FILE_PATH = "${DEPLOY_DIR_IMAGE}/linux.bif"
 
 # for using init instead of systemd
 # DISTRO_FEATURES_append = " sysvinit "
@@ -121,5 +93,3 @@ DISTRO_FEATURES_append = " zeroconf systemd usbhost "
 VIRTUAL-RUNTIME_init_manager = "systemd"
 
 IMAGE_INSTALL_append = " udev "
-
-PREFERRED_PROVIDER_virtual/boot-bin = "xilinx-bootbin"
