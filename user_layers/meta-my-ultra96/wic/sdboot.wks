@@ -1,9 +1,0 @@
-# NOTE: Based mostly from sdimage-bootpart.wks
-# short-description: Create SD card image with a boot partition
-# long-description: Creates a partitioned SD card image. Boot files
-# are located in the first vfat partition.
-
-# copy files specified in IMAGE_BOOT_FILES to the boot partition
-part /boot --source bootimg-partition --ondisk mmcblk0 --fstype=vfat --label BOOT --active --align 4 --size 1G
-
-part / --source rootfs --ondisk mmcblk0 --fstype=ext4 --label rootfs --align 4 --size 4G

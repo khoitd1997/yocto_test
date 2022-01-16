@@ -24,7 +24,6 @@ BBFILES ?= ""
 # ${KSD_THIRD_PARTY_LAYERS_DIR}/forked_layer/meta-xilinx-tools 
 
 # ${KSD_USER_LAYERS_DIR}/meta-my-ultra96
-# ${KSD_USER_LAYERS_DIR}/meta-myboard-bsp
 
 # ${KSD_USER_LAYERS_DIR}/meta-my-distro
 # ${KSD_USER_LAYERS_DIR}/meta-kernel-customization
