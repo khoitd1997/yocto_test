@@ -58,9 +58,10 @@ EXTRA_IMAGE_FEATURES_remove = "ssh-server-dropbear"
 
 # KERNEL_FEATURES_append = "features/test_features/test.scc"
 
-# set empty so that xsct isn't downloaded from remote
+# set empty here so that xsct isn't downloaded from remote
 # based on observations from xsct-tarball.bbclass
-XSCT_TARGETS = ""
+# however, for the sake of CI build, don't enable it now
+# XSCT_TARGETS = ""
 
 # NOTE: Seems like tools are added to PATH using vivado.bbclass
 XILINX_VER_MAIN = "2021.2"
