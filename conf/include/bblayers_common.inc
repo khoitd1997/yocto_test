@@ -35,6 +35,7 @@ BBLAYERS = " \
     \
     ${KSD_USER_LAYERS_DIR}/meta-user-package \
     ${KSD_USER_LAYERS_DIR}/meta-common-bsp \
+    ${KSD_USER_LAYERS_DIR}/meta-myboard-bsp \
     \
     \
     ${KSD_META_OPENEMBEDDED_DIR}/meta-perl \
