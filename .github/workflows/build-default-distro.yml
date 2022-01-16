@@ -1,0 +1,16 @@
+name: build-default distro
+on: [push]
+jobs:
+  build-default-distro:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          lfs: true
+          submodules: true
+      - name: do default build
+        shell: bash
+        run: |
+          "${GITHUB_WORKSPACE}/install_deps.sh"
+          "${GITHUB_WORKSPACE}/set_build_config.sh" debug
+          "${GITHUB_WORKSPACE}/build.sh "
