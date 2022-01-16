@@ -1,0 +1,8 @@
+// this file will be included at the end of system-top.dts
+
+/ {
+    my_custom_device {
+        #address-cells = <2>;
+        #size-cells = <2>;
+    };
+};
