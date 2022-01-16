@@ -4,7 +4,7 @@ LICENSE = "CLOSED"
 inherit deploy nopackages
 inherit terminal
 
-OE_TERMINAL_EXPORTS += "MACHINE DEPLOY_DIR_IMAGE BOOT_PARTITION_FILES"
+OE_TERMINAL_EXPORTS += "MACHINE DEPLOY_DIR_IMAGE BOOT_PARTITION_FILES TMPDIR"
 
 do_configure[noexec] = "1"
 do_install[noexec] = "1"
@@ -43,3 +43,9 @@ python do_vscode_to_deploy_dir() {
 }
 addtask do_vscode_to_deploy_dir after do_deploy
 do_vscode_to_deploy_dir[nostamp] = "1"
+
+python do_vscode_to_tmp_dir() {
+    oe_terminal("code ${TMPDIR}", "Vscode", d)
+}
+addtask do_vscode_to_tmp_dir after do_deploy
+do_vscode_to_tmp_dir[nostamp] = "1"
