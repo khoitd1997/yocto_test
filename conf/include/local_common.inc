@@ -60,17 +60,14 @@ KERNEL_FEATURES_append = " features/test_features/test.scc "
 
 # set empty here so that xsct isn't downloaded from remote
 # based on observations from xsct-tarball.bbclass
-# however, for the sake of CI build, don't enable it now
-# XSCT_TARGETS = ""
+# NOTE: Vitis installation is actually required for the bitstream steps
+# so might as well not download another copy of xsct
+XSCT_TARGETS = ""
 
 # NOTE: Seems like tools are added to PATH using vivado.bbclass
 XILINX_VER_MAIN = "2021.2"
 XILINX_VIVADO_DESIGN_SUIT = "/tools/Xilinx/Vivado/${XILINX_VER_MAIN}"
 XILINX_SDK_TOOLCHAIN = "/tools/Xilinx/Vitis/${XILINX_VER_MAIN}"
-
-# Fix for Xilinx issue:
-# https://github.com/Xilinx/meta-xilinx/pull/24
-# DEFAULTTUNE = "cortexa53"
 
 # haveged seems to have problems with postinstall script for systemd
 # IMAGE_INSTALL_append = " haveged "
