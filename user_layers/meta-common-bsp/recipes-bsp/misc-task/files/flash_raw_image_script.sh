@@ -13,6 +13,11 @@ trap 'err_report' ERR
 image_name="initramfs-image"
 image_path="${DEPLOY_DIR_IMAGE}/${image_name}-${MACHINE}.wic"
 
+# only include devices with major number 8, ie SCSI disk devices that the SD card
+# would fall under
+echo "List of possible devices:"
+lsblk --include 8 --output NAME,FSTYPE,LABEL
+echo ""
 echo "Please specify the block device name(ex: sda, sdb, etc)"
 read block_device_name
 
