@@ -1,0 +1,2 @@
+# enable debugging prints
+YAML_COMPILER_FLAGS_append = " -DFSBL_DEBUG -DFSBL_DEBUG_INFO -DFSBL_DEBUG_DETAILED "

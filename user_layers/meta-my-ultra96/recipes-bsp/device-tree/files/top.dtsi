@@ -1,5 +1,4 @@
-#include "system-top.dts"
-#include "mipi-support-ultra96.dtsi"
+// #include "mipi-support-ultra96.dtsi"
 
 / {
     reserved-memory {

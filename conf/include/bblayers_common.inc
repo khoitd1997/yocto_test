@@ -23,8 +23,6 @@ BBFILES ?= ""
 # ${KSD_THIRD_PARTY_LAYERS_DIR}/forked_layer/meta-xilinx/meta-xilinx-bsp 
 # ${KSD_THIRD_PARTY_LAYERS_DIR}/forked_layer/meta-xilinx-tools 
 
-# ${KSD_USER_LAYERS_DIR}/meta-my-ultra96
-
 BBLAYERS = " \
     ${KSD_POKY_DIR}/meta \
     ${KSD_POKY_DIR}/meta-poky \
@@ -35,6 +33,7 @@ BBLAYERS = " \
     \
     ${KSD_USER_LAYERS_DIR}/meta-common-bsp \
     ${KSD_USER_LAYERS_DIR}/meta-myboard-bsp \
+    ${KSD_USER_LAYERS_DIR}/meta-my-ultra96 \
     \
     ${KSD_META_OPENEMBEDDED_DIR}/meta-perl \
     ${KSD_META_OPENEMBEDDED_DIR}/meta-python \
