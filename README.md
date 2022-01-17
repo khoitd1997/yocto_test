@@ -11,7 +11,7 @@ git submodule update
 
 ## Notes
 
-**When a build is running, bitbake is not usable**
+**When a build is running, bitbake is not usable**, meaning you can only build one target at a time, editting files during build seems to be fine most of the time but if weird errors happen, try `build_clean_delete_build_dir.sh` to see if the error still happens
 
 All `TODO` are in the form: `TODO(kd): ...`
 
@@ -89,9 +89,11 @@ generate_kernel_cfg_fragment
 
 The `expert_scripts/` directory contains scripts geared more towards expert users that go beyond simple building and config changes
 
-TODO(kd): U-boot build doesn't seem to be in the standard Yocto, seems like every BSP does it differently:
-https://git.yoctoproject.org/cgit/cgit.cgi/meta-freescale/tree/recipes-bsp/u-boot/u-boot-imx_2017.03.bb?h=rocko
-https://xilinx-wiki.atlassian.net/wiki/spaces/A/pages/18841883/Yocto
+## General troubleshooting tips
+
+If you see some weird errors, don't panic and run `build_clean_delete_build_dir.sh` and see if the error still happens. If the error disappears then it could just be a transient error that only happens when developing the config files. `build_clean_delete_build_dir.sh` will only erase the build directory(and not the cache directory) so it should take very little time to complete(at least when compared to a full clean build)
+
+As good practice, you should occasionally run `build_clean_delete_sstate_dir.sh`(this script deletes both build and cache dir) to make sure that fresh build will work
 
 ## Notes about using Kconfig
 

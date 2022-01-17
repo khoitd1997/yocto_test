@@ -56,7 +56,7 @@ CACHE = "${KSD_CACHE_DIR}/bitbake_cache"
 
 EXTRA_IMAGE_FEATURES_remove = "ssh-server-dropbear"
 
-# KERNEL_FEATURES_append = "features/test_features/test.scc"
+KERNEL_FEATURES_append = " features/test_features/test.scc "
 
 # set empty here so that xsct isn't downloaded from remote
 # based on observations from xsct-tarball.bbclass
