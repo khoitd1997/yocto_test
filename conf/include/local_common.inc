@@ -1,9 +1,5 @@
 require build_path.inc
-
-# NOTE: Add extra Python import here
-OE_EXTRA_IMPORTS_append = " math multiprocessing "
-
-INHERIT += "buildhistory buildstats" 
+require build_infra.inc
 
 # the local.conf of individual build config should set these variables
 # this is just a placeholder
@@ -11,8 +7,8 @@ KSD_BUILD_NAME ?= "defaultname"
 
 # MACHINE = "qemuarm64"
 # MACHINE = "zcu102-zynqmp"
-# MACHINE = "my-zcu102-zynqmp"
-MACHINE = "my-ultra96-zynqmp"
+MACHINE = "my-zcu102-zynqmp"
+# MACHINE = "my-ultra96-zynqmp"
 # MACHINE = "ultra96-zynqmp"
 # MACHINE = "qemuzynq"
 # MACHINE = "zynqmp-generic"
@@ -23,37 +19,13 @@ DISTRO = "my-distro"
 PACKAGE_CLASSES ?= "package_ipk"
 
 SDKMACHINE = "x86_64"
+# SDKMACHINE = "i686-mingw32"
 
 USER_CLASSES_append = "buildstats image-mklibs image-prelink"
 
 PATCHRESOLVE = "noop"
 
 CONF_VERSION = "1"
-
-### BUILD INFRASTRUCTURE CONFIG
-BB_DISKMON_DIRS = "\
-    STOPTASKS,${TMPDIR},1G,100K \
-    STOPTASKS,${DL_DIR},1G,100K \
-    STOPTASKS,${SSTATE_DIR},1G,100K \
-    STOPTASKS,/tmp,100M,100K \
-    ABORT,${TMPDIR},100M,1K \
-    ABORT,${DL_DIR},100M,1K \
-    ABORT,${SSTATE_DIR},100M,1K \
-    ABORT,/tmp,10M,1K"
-
-BB_NUMBER_THREADS = "${@max(math.floor(multiprocessing.cpu_count() * 0.75), 1)}"
-
-# NOTE: Every machine-distro comb should have a unique val for these
-KSD_BUILD_ID_STR = "${MACHINE}-${DISTRO}-${KSD_BUILD_NAME}"
-TMPDIR = "${TOPDIR}/${KSD_BUILD_ID_STR}/tmp"
-BUILDHISTORY_DIR = "${TOPDIR}/${KSD_BUILD_ID_STR}/buildhistory"
-
-SSTATE_DIR = "${KSD_CACHE_DIR}/sstate"
-SSTATE_MIRRORS = "file://.* file://${SSTATE_DIR}/PATH"
-
-DL_DIR = "${KSD_CACHE_DIR}/dl"
-BB_GENERATE_MIRROR_TARBALLS = "1"
-CACHE = "${KSD_CACHE_DIR}/bitbake_cache"
 
 EXTRA_IMAGE_FEATURES_remove = "ssh-server-dropbear"
 
