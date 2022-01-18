@@ -1,4 +1,6 @@
-// #include "mipi-support-ultra96.dtsi"
+#ifdef ENABLE_MIPI
+#include "mipi-support-ultra96.dtsi"
+#endif
 
 / {
     reserved-memory {
