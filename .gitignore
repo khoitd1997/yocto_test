@@ -19,3 +19,5 @@ vscode-bitbake-build/
 /conf/tmp/*
 !/conf/tmp/.gitkeep
 .build_var_storage
+
+toolchain/

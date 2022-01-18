@@ -35,6 +35,8 @@ BBLAYERS = " \
     ${KSD_USER_LAYERS_DIR}/meta-myboard-bsp \
     ${KSD_USER_LAYERS_DIR}/meta-my-ultra96 \
     \
+    ${KSD_THIRD_PARTY_LAYERS_DIR}/meta-mingw \
+    \
     ${KSD_META_OPENEMBEDDED_DIR}/meta-perl \
     ${KSD_META_OPENEMBEDDED_DIR}/meta-python \
     ${KSD_META_OPENEMBEDDED_DIR}/meta-filesystems \
