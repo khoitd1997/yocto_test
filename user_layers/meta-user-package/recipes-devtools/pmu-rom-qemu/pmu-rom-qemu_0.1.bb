@@ -6,6 +6,8 @@ SECTION = "devel"
 
 LICENSE = "CLOSED"
 
+COMPATIBLE_HOST = ".*"
+
 # NOTE: pmu-rom.elf can obtained from an extracted .bsp file
 # instruction:
 # https://github.com/Xilinx/meta-xilinx/blob/master/meta-xilinx-bsp/README.qemu.md

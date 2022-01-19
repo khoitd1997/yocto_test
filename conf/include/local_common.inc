@@ -18,8 +18,8 @@ DISTRO = "my-distro"
 
 PACKAGE_CLASSES ?= "package_ipk"
 
-SDKMACHINE = "x86_64"
-# SDKMACHINE = "i686-mingw32"
+# SDKMACHINE = "x86_64"
+SDKMACHINE = "x86_64-mingw32"
 
 USER_CLASSES_append = "buildstats image-mklibs image-prelink"
 
@@ -65,3 +65,6 @@ DISTRO_FEATURES_append = " zeroconf systemd usbhost "
 VIRTUAL-RUNTIME_init_manager = "systemd"
 
 IMAGE_INSTALL_append = " udev "
+
+# this provides bsdtar, bsdcpio since gnu cpio won't build with mingw
+TOOLCHAIN_HOST_TASK_append = " nativesdk-libarchive "
