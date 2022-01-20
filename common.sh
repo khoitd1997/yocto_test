@@ -26,6 +26,9 @@ poky_tmp_dir="${poky_build_dir}/tmp"
 poky_work_dir="${poky_tmp_dir}/work"
 poky_build_conf_dir="${poky_build_dir}/conf"
 
+# arguments to activate the GUI to view dependency
+bb_task_exp_arg=" -g -u taskexp "
+
 third_party_layer_dir="${common_script_dir}/third_party_layers"
 user_layer_dir="${common_script_dir}/user_layers"
 
@@ -59,22 +62,17 @@ function clean_sstate {
 }
 
 # use "-q" option to have stdout(but not stderr) directed to /dev/null
-# shellcheck disable=SC2120
 function source_oe_init_script {
-    local curr_pwd=${PWD}
-
-    # cd to poky_dir to make sure the build directory is created properly
-    # technically could call source ${oe_init_script_path} build_dir
-    # but that might not work with some shell
-    cd "${poky_dir}" || exit
+    # NOTE: Having cd after sourcing oe_init_script_path seems to mess up some
+    # functionalities like -u taskexp due to some python bugs
+    # https://github.com/nedbat/coveragepy/issues/890
+    cd "${poky_dir}"
     if [ "${1}" = "-q" ]; then
         shift
         source "${oe_init_script_path}" > /dev/null
     else
         source "${oe_init_script_path}"
     fi
-
-    cd "${curr_pwd}" || exit
 }
 
 function init_repo {
