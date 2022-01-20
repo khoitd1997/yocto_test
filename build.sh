@@ -14,11 +14,6 @@ else
     print_important_message "****Current build config: ${curr_build_config}****\n"
 fi
 
-# NOTE: This is to fix an issue with the layer
-# https://github.com/Xilinx/meta-openamp/issues/7
-# the issue should be fixed in later versions
-mkdir -p "${third_party_layer_dir}/meta-openamp/files/custom-licenses"
-
 # after a clean_all the conf directory will have been wiped out so use set_build_config to reinitialize it
 set_build_config "${curr_build_config}"
 
@@ -30,13 +25,5 @@ if [ "$#" -eq 1 ]; then
 fi
 
 print_important_message "Building Target: ${bb_target_name}\n"
-# time bitbake procrank
 time bitbake "${bb_target_name}"
 # time bitbake --continue core-image-minimal
-# bitbake --continue core-image-sato
-
-# TODO(kd): Compile log file is at
-# /home/kd/yocto_test/poky/build/tmp/work/cortexa57-poky-linux/procrank/0.1-r0/temp/
-
-# TODO(kd): Kernel source at
-# ~/yocto_test/poky/build/tmp/work-shared/qemuarm64/kernel-source

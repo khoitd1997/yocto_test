@@ -7,4 +7,6 @@ source "${script_dir}/../common.sh"
 
 source_oe_init_script
 
-bitbake meta-toolchain
+# bitbake meta-toolchain
+# bitbake ${bb_task_exp_arg} nativesdk-openssl
+bitbake nativesdk-openssl

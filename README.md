@@ -135,3 +135,24 @@ The behavior of xconfig and menuconfig is different since not only is xconfig no
   - Start with config A, after your xconfig, this will generate config B, if fragment is generated at this point it's from A diff with B
   - Assuming fragment isn't generated in the last step, if you run xconfig again, generating config C and fragment is generated at this point it is from C diff with A
   - This time, you are sure that when you do generate fragment, all the configs from the last time fragment is generated are in the newly generated one
+
+## Generating dependency graph
+
+Often when debugging while a certain packages is included in the build either due to errors or because it increases the size of the image a lot, it's helpful to have a dependency graph to see which packages pull the package of interest into the build
+
+`bitbake` has multiple built-in methods for visualizing package dependency:
+
+- graphviz only: this generates a dependency graph in `.dot` files which can then be converted to image files like `.png`, however, this method is rarely useful since the graph it generated is so big that image viewer sometimes have problems rendering them. The generated graph can be useful for showing a whole system view though
+- graphviz with taskexp: this will probably be used most of the time since it shows a nice GUI that drills down to individual tasks and show both things that depend on them and thing that they depend on
+
+Instruction is below for how to use graphviz with taskexp. Note that both methods should only be enabled when needed since they are either clutter the workspace or spawns a disruptive GUI that prevents automation
+
+```shell
+
+# to show dependency graph for building a recipe
+bitbake -g -u taskexp recipe-name
+
+# for convenience, the bb_task_exp_arg bash variable is defined
+# in common.sh that will do the same thing, to use it:
+bitbake ${bb_task_exp_arg} recipe-name
+```
