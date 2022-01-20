@@ -12,8 +12,6 @@ HOSTLDFLAGS = "${BUILD_LDFLAGS}"
 # which is not what we want when building for host
 PKG_CONFIG_SYSROOT_DIR = ""
 
-KCONFIG_XCONFIG_ROOTDIR ??= "${B}"
-
 # specify where to store config files are reference when diffing against
 # when generating fragment files
 KCONFIG_CACHE_DIR ?= "${B}"
@@ -28,23 +26,25 @@ python do_xconfig() {
     if d.getVar('KCONFIG_CACHE_DIR') == "":
         raise RuntimeError("Error: KCONFIG_CACHE_DIR is empty!")
 
-    # instead of using the previous .config file as reference for diff like menuconfig, 
-    # we use the one cached
-    config = d.getVar('CONFIG_CACHE_PATH')
-    configorig = os.path.join(d.getVar('KCONFIG_XCONFIG_ROOTDIR'), ".config.orig")
-
-    # .config isn't cached yet so generate one
-    if not os.path.exists(config):
-        bb.plain("No saved .config found, generating one from current .config")
-        shutil.copy(".config", config) 
+    config = os.path.join(d.getVar('KCONFIG_CONFIG_ROOTDIR'), ".config")
 
     try:
         mtime = os.path.getmtime(config)
-        shutil.copy(config, configorig)
     except OSError:
         mtime = 0
 
-    import subprocess
+    # instead of using the previous .config file as reference for diff like menuconfig, 
+    # we use the one cached by copying the cached one to be .config.orig
+    # which is used by the diffconfig task to genereate fragment
+    cached_config = d.getVar('CONFIG_CACHE_PATH')
+    config_orig = os.path.join(d.getVar('KCONFIG_CONFIG_ROOTDIR'), ".config.orig")
+
+    # .config isn't cached yet so generate one
+    if not os.path.exists(cached_config):
+        bb.note("No saved .config found, generating one from current .config")
+        shutil.copy(config, cached_config) 
+
+    shutil.copy(cached_config, config_orig)
 
     oe_terminal("sh -c \"pkg-config --debug --cflags Qt5Core; make %s; if [ \\$? -ne 0 ]; then echo 'Command failed.'; printf 'Press any key to continue... '; read r; fi\"" % "xconfig",
                 d.getVar('PN') + ' Configuration', d)
@@ -61,7 +61,7 @@ python do_xconfig() {
             bb.build.write_taint('do_compile', d)
 }
 do_xconfig[nostamp] = "1"
-do_xconfig[dirs] = "${KCONFIG_XCONFIG_ROOTDIR}"
+do_xconfig[dirs] = "${KCONFIG_CONFIG_ROOTDIR}"
 
 addtask xconfig after do_configure
 
