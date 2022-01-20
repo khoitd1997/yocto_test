@@ -1,27 +1,9 @@
 [submodule "poky"]
 	path = poky
 	url = https://git.yoctoproject.org/poky
-[submodule "third_party_layers/meta-qt5"]
-	path = third_party_layers/meta-qt5
-	url = https://github.com/meta-qt5/meta-qt5.git
 [submodule "third_party_layers/meta-openembedded"]
 	path = third_party_layers/meta-openembedded
 	url = https://github.com/openembedded/meta-openembedded.git
-[submodule "third_party_layers/meta-xilinx-tools"]
-	path = third_party_layers/meta-xilinx-tools
-	url = https://github.com/Xilinx/meta-xilinx-tools.git
-[submodule "third_party_layers/meta-xilinx"]
-	path = third_party_layers/meta-xilinx
-	url = https://github.com/Xilinx/meta-xilinx.git
-[submodule "third_party_layers/meta-petalinux"]
-	path = third_party_layers/meta-petalinux
-	url = https://github.com/Xilinx/meta-petalinux.git
-[submodule "third_party_layers/meta-openamp"]
-	path = third_party_layers/meta-openamp
-	url = https://github.com/Xilinx/meta-openamp.git
-[submodule "third_party_layers/meta-virtualization"]
-	path = third_party_layers/meta-virtualization
-	url = https://github.com/Xilinx/meta-virtualization.git
 [submodule "third_party_layers/meta-mingw"]
 	path = third_party_layers/meta-mingw
 	url = https://git.yoctoproject.org/meta-mingw
