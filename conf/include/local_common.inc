@@ -66,5 +66,4 @@ VIRTUAL-RUNTIME_init_manager = "systemd"
 
 IMAGE_INSTALL_append = " udev "
 
-# this provides bsdtar, bsdcpio since gnu cpio won't build with mingw
-TOOLCHAIN_HOST_TASK_append = " nativesdk-libarchive "
+TOOLCHAIN_HOST_TASK_append = " nativesdk-python3 nativesdk-ccache"
