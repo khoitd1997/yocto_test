@@ -4,3 +4,6 @@
 [submodule "third_party_layers/meta-openembedded"]
 	path = third_party_layers/meta-openembedded
 	url = https://github.com/openembedded/meta-openembedded.git
+[submodule "third_party_layers/meta-mingw"]
+	path = third_party_layers/meta-mingw
+	url = https://git.yoctoproject.org/meta-mingw
