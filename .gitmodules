@@ -1,12 +1,11 @@
 [submodule "poky"]
 	path = poky
 	url = https://git.yoctoproject.org/poky
-    shallow=true
 [submodule "third_party_layers/meta-openembedded"]
 	path = third_party_layers/meta-openembedded
 	url = https://github.com/openembedded/meta-openembedded.git
-    shallow=true
+    shallow = true
 [submodule "third_party_layers/meta-mingw"]
 	path = third_party_layers/meta-mingw
 	url = https://git.yoctoproject.org/meta-mingw
-    shallow=true
+    shallow = true
