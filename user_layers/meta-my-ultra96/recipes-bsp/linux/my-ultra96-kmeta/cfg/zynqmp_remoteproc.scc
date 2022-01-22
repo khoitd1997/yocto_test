@@ -1,0 +1,6 @@
+define KFEATURE_DESCRIPTION "Zynqmp R5 remoteproc"
+define KFEATURE_COMPATIBILITY all
+
+define KTYPE standard
+
+kconf hardware zynqmp_remoteproc.cfg
