@@ -109,6 +109,7 @@ function open_recipe_work_folder {
     cd "${curr_pwd}"
 }
 
+# TODO: symlinking content of include doesn't work super well when we add files
 function set_build_config {
     local build_config="${1}"
 
