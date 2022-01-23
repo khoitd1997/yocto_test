@@ -18,8 +18,8 @@ DISTRO = "my-distro"
 
 PACKAGE_CLASSES ?= "package_ipk"
 
-# SDKMACHINE = "x86_64"
-SDKMACHINE = "x86_64-mingw32"
+SDKMACHINE = "x86_64"
+# SDKMACHINE = "x86_64-mingw32"
 
 USER_CLASSES_append = "buildstats image-mklibs image-prelink"
 
@@ -30,6 +30,9 @@ CONF_VERSION = "1"
 EXTRA_IMAGE_FEATURES_remove = "ssh-server-dropbear"
 
 KERNEL_FEATURES_append = " features/test_features/test.scc "
+KERNEL_FEATURES_append_my-ultra96-zynqmp = " \
+                            cfg/zynqmp_remoteproc.scc \
+"
 
 # set empty here so that xsct isn't downloaded from remote
 # based on observations from xsct-tarball.bbclass
