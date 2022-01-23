@@ -35,12 +35,14 @@ KERNEL_FEATURES_append = " features/test_features/test.scc "
 # based on observations from xsct-tarball.bbclass
 # NOTE: Vitis installation is actually required for the bitstream steps
 # so might as well not download another copy of xsct
-XSCT_TARGETS = ""
+# XSCT_TARGETS = ""
+# this is used to fix a Xilinx bug with missing bitstream target in XSCT_TARGETS
+XSCT_TARGETS_append = " bitstream "
 
 # NOTE: Seems like tools are added to PATH using vivado.bbclass
 XILINX_VER_MAIN = "2021.2"
-XILINX_VIVADO_DESIGN_SUIT = "/tools/Xilinx/Vivado/${XILINX_VER_MAIN}"
-XILINX_SDK_TOOLCHAIN = "/tools/Xilinx/Vitis/${XILINX_VER_MAIN}"
+# XILINX_VIVADO_DESIGN_SUIT = "/tools/Xilinx/Vivado/${XILINX_VER_MAIN}"
+# XILINX_SDK_TOOLCHAIN = "/tools/Xilinx/Vitis/${XILINX_VER_MAIN}"
 
 # haveged seems to have problems with postinstall script for systemd
 # IMAGE_INSTALL_append = " haveged "
