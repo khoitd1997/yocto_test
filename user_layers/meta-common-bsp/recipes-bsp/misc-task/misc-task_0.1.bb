@@ -4,7 +4,13 @@ LICENSE = "CLOSED"
 inherit deploy nopackages
 inherit terminal
 
-OE_TERMINAL_EXPORTS += "MACHINE DEPLOY_DIR_IMAGE BOOT_PARTITION_FILES TMPDIR"
+OE_TERMINAL_EXPORTS += " \
+    MACHINE \
+    DEPLOY_DIR_IMAGE \
+    BOOT_PARTITION_FILES \
+    TMPDIR \
+    KSD_WORKSPACE_SOURCES_DIR \
+"
 
 do_configure[noexec] = "1"
 do_install[noexec] = "1"
@@ -49,3 +55,9 @@ python do_vscode_to_tmp_dir() {
 }
 addtask do_vscode_to_tmp_dir after do_deploy
 do_vscode_to_tmp_dir[nostamp] = "1"
+
+python do_vscode_to_workspace_sources_dir() {
+    oe_terminal("code ${KSD_WORKSPACE_SOURCES_DIR}", "Vscode", d)
+}
+addtask do_vscode_to_workspace_sources_dir after do_deploy
+do_vscode_to_workspace_sources_dir[nostamp] = "1"
