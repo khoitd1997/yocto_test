@@ -47,12 +47,14 @@ With these layers:
 
 When about 1/3 of a task is finished, the size usage(including everything like `dl` and `sstate`) seems to be about 200 GB, with more layers, the total size would probably be `~800 GB`
 
-For fresh build with no cache(both ssstate and dl), it takes about 75 mins with some packges for kernel+rootfs
+## Installing Host Dependencies
 
-## Needed Ubuntu packages
+Follow instruction below before your first build
 
 ```shell
-run ./install_deps.sh to install deps
+# cd <path-to-this-repo>
+# install dependency
+./install_deps.sh
 ```
 
 ## Usage instructions
@@ -156,3 +158,48 @@ bitbake -g -u taskexp recipe-name
 # in common.sh that will do the same thing, to use it:
 bitbake ${bb_task_exp_arg} recipe-name
 ```
+
+## Modifying package source code
+
+Modifying package source code is needed for example when you want to do kernel customizations, the flow is similar between packages. The steps are heavily based on [this Yocto Manual section](https://www.yoctoproject.org/docs/latest/kernel-dev/kernel-dev.html#using-devtool-to-patch-the-kernel)
+
+For example, if you want to modify the source code of `linux-xlnx`
+
+```shell
+cd <path-to-this-repo>
+# setting up shell environment include yocto tools
+. init_env
+
+# once the step finishes, the souce will be in poky/build/workspace/sources/
+# and you can modify it and rebuild
+# NOTE: A LAYER WILL BE ADDED BY YOCTO SCRIPT TO YOUR BBLAYER.CONF
+# DO NOT CHECK THIS CHANGE INTO git SINCE IT'S PURELY FOR DEVELOPMENTS
+devtool modify linux-xlnx
+
+# to open a vscode windows to the workspace source dir
+./vscode_to_workspace_sources_dir.sh
+
+# then modify the source code and then build the image as normal
+# until you are satisfied with the changes
+# now is the time to add the patch into a layer
+cd <path-to-source-of-virtual-kernel>
+git diff HEAD > my_patch.patch # get all the changes you have made into a patch file
+
+# once you have your patch file follow this link on how to put it into a layer:
+# https://www.yoctoproject.org/docs/latest/kernel-dev/kernel-dev.html#applying-patches
+
+# once you have the patches set up in a layer and want to try it out
+# it's recommended to do a clean build that delete build_dir to make sure things
+# are working as expected, since this only delete build_dir it should not take long:
+
+# go to bblayers.conf and delete the workspace layer added by Yocto
+# it should be easy to spot since it should be the only one that uses absolute path
+# once done, you can do the clean build:
+build_clean_delete_build_dir.sh
+```
+
+When devtool modify is launched, it creates a copy of the source and use that for building the images after that. It also makes the source folder of the package a git repository(if it wasn't already), this is for changes tracking, Yocto will use git change tracking to determine if a rebuild of a package is necessary
+
+## Adding Custom Kernel Module to Stock Kernel
+
+[This link here has guidance](https://www.yoctoproject.org/docs/2.2/kernel-dev/kernel-dev.html#working-with-out-of-tree-modules) on how to achieve this

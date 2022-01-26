@@ -22,6 +22,7 @@ default_bb_image_target="initramfs-image"
 
 poky_dir="${common_script_dir}/poky"
 poky_build_dir="${poky_dir}/build"
+poky_workspace_dir="${poky_build_dir}/workspace"
 poky_tmp_dir="${poky_build_dir}/tmp"
 poky_work_dir="${poky_tmp_dir}/work"
 poky_build_conf_dir="${poky_build_dir}/conf"
