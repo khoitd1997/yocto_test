@@ -72,3 +72,6 @@ VIRTUAL-RUNTIME_init_manager = "systemd"
 IMAGE_INSTALL_append = " udev "
 
 TOOLCHAIN_HOST_TASK_append = " nativesdk-python3 nativesdk-ccache"
+
+# recommend means to build and install if the target is present
+MACHINE_ESSENTIAL_EXTRA_RRECOMMENDS += "kernel-modules"
