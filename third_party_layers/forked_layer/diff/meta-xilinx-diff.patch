@@ -1,0 +1,26 @@
+diff -bur '--exclude=.git' /home/kd/yocto_test/third_party_layers/forked_layer/meta-xilinx-xlnx-rel-v2021.2/meta-xilinx-bsp/conf/layer.conf meta-xilinx/meta-xilinx-bsp/conf/layer.conf
+--- /home/kd/yocto_test/third_party_layers/forked_layer/meta-xilinx-xlnx-rel-v2021.2/meta-xilinx-bsp/conf/layer.conf	2022-01-26 20:55:01.378923817 -0800
++++ meta-xilinx/meta-xilinx-bsp/conf/layer.conf	2022-02-06 22:56:28.869141653 -0800
+@@ -18,7 +18,7 @@
+ 
+ LAYERDEPENDS_xilinx = "core"
+ 
+-LAYERSERIES_COMPAT_xilinx = "hardknott"
++LAYERSERIES_COMPAT_xilinx = "gatesgarth"
+ 
+ SIGGEN_EXCLUDE_SAFE_RECIPE_DEPS += " \
+   *->zocl \
+diff -bur '--exclude=.git' /home/kd/yocto_test/third_party_layers/forked_layer/meta-xilinx-xlnx-rel-v2021.2/meta-xilinx-standalone/conf/layer.conf meta-xilinx/meta-xilinx-standalone/conf/layer.conf
+--- /home/kd/yocto_test/third_party_layers/forked_layer/meta-xilinx-xlnx-rel-v2021.2/meta-xilinx-standalone/conf/layer.conf	2022-01-26 20:55:01.418925118 -0800
++++ meta-xilinx/meta-xilinx-standalone/conf/layer.conf	2022-02-06 22:56:28.929147163 -0800
+@@ -15,5 +15,5 @@
+ LAYERDEPENDS_xilinx-standalone = "core xilinx"
+ LAYERRECOMMENDS_xilinx-standalone = "xilinx-microblaze"
+ 
+-LAYERSERIES_COMPAT_xilinx-standalone = "hardknott"
++LAYERSERIES_COMPAT_xilinx-standalone = "gatesgarth"
+ XILINX_RELEASE_VERSION = "v2021.2"
+Only in meta-xilinx/meta-xilinx-standalone/recipes-core/newlib: libgloss_3.%.bbappend
+Only in /home/kd/yocto_test/third_party_layers/forked_layer/meta-xilinx-xlnx-rel-v2021.2/meta-xilinx-standalone/recipes-core/newlib: libgloss_4.%.bbappend
+Only in meta-xilinx/meta-xilinx-standalone/recipes-core/newlib: newlib_3.%.bbappend
+Only in /home/kd/yocto_test/third_party_layers/forked_layer/meta-xilinx-xlnx-rel-v2021.2/meta-xilinx-standalone/recipes-core/newlib: newlib_4.%.bbappend

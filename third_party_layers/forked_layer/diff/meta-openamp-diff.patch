@@ -1,0 +1,12 @@
+diff -bur '--exclude=.git' /home/kd/yocto_test/third_party_layers/forked_layer/meta-openamp-xlnx-rel-v2021.2/conf/layer.conf meta-openamp/conf/layer.conf
+--- /home/kd/yocto_test/third_party_layers/forked_layer/meta-openamp-xlnx-rel-v2021.2/conf/layer.conf	2022-01-26 20:55:01.366923427 -0800
++++ meta-openamp/conf/layer.conf	2022-02-06 22:56:23.864682645 -0800
+@@ -19,7 +19,7 @@
+ # cause compatibility issues with other layers
+ LAYERVERSION_openamp-layer = "1"
+ 
+-LAYERSERIES_COMPAT_openamp-layer = "hardknott"
++LAYERSERIES_COMPAT_openamp-layer = "gatesgarth"
+ 
+ # set layer path for this layer only
+ LAYER_PATH_openamp-layer = "${LAYERDIR}"
