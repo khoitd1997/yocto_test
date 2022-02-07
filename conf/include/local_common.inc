@@ -58,8 +58,8 @@ HDF_BASE = "file://"
 # HDF_PATH_my-ultra96-zynqmp = "${KSD_XSA_DIR}/ULTRA96V2.xsa"
 # custom xsa
 # HDF_PATH_my-ultra96-zynqmp = "${KSD_XSA_DIR}/ULTRA96V2_wrapper.xsa"
-# HDF_PATH_my-ultra96-zynqmp = "${KSD_XSA_DIR}/design_1_wrapper.xsa"
-HDF_PATH_my-ultra96-zynqmp = "${KSD_XSA_DIR}/ULTRA96V2_oob_2021_2.xsa"
+HDF_PATH_my-ultra96-zynqmp = "${KSD_XSA_DIR}/design_1_wrapper.xsa"
+# HDF_PATH_my-ultra96-zynqmp = "${KSD_XSA_DIR}/ULTRA96V2_oob_2021_2.xsa"
 # HDF_PATH_ultra96-zynqmp = "${KSD_XSA_DIR}/ULTRA96V2_wrapper.xsa"
 
 HDF_PATH_my-zcu102-zynqmp = "${KSD_XSA_DIR}/zcu102_2021_2.xsa"
