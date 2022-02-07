@@ -1,6 +1,6 @@
 diff -bur '--exclude=.git' /home/kd/yocto_test/third_party_layers/forked_layer/meta-xilinx-xlnx-rel-v2021.2/meta-xilinx-bsp/conf/layer.conf meta-xilinx/meta-xilinx-bsp/conf/layer.conf
---- /home/kd/yocto_test/third_party_layers/forked_layer/meta-xilinx-xlnx-rel-v2021.2/meta-xilinx-bsp/conf/layer.conf	2022-01-26 20:55:01.378923817 -0800
-+++ meta-xilinx/meta-xilinx-bsp/conf/layer.conf	2022-02-06 22:56:28.869141653 -0800
+--- /home/kd/yocto_test/third_party_layers/forked_layer/meta-xilinx-xlnx-rel-v2021.2/meta-xilinx-bsp/conf/layer.conf	2022-02-06 23:02:53.503433717 -0800
++++ meta-xilinx/meta-xilinx-bsp/conf/layer.conf	2022-02-06 23:08:05.532073369 -0800
 @@ -18,7 +18,7 @@
  
  LAYERDEPENDS_xilinx = "core"
@@ -11,8 +11,8 @@ diff -bur '--exclude=.git' /home/kd/yocto_test/third_party_layers/forked_layer/m
  SIGGEN_EXCLUDE_SAFE_RECIPE_DEPS += " \
    *->zocl \
 diff -bur '--exclude=.git' /home/kd/yocto_test/third_party_layers/forked_layer/meta-xilinx-xlnx-rel-v2021.2/meta-xilinx-standalone/conf/layer.conf meta-xilinx/meta-xilinx-standalone/conf/layer.conf
---- /home/kd/yocto_test/third_party_layers/forked_layer/meta-xilinx-xlnx-rel-v2021.2/meta-xilinx-standalone/conf/layer.conf	2022-01-26 20:55:01.418925118 -0800
-+++ meta-xilinx/meta-xilinx-standalone/conf/layer.conf	2022-02-06 22:56:28.929147163 -0800
+--- /home/kd/yocto_test/third_party_layers/forked_layer/meta-xilinx-xlnx-rel-v2021.2/meta-xilinx-standalone/conf/layer.conf	2022-02-06 23:03:03.755641857 -0800
++++ meta-xilinx/meta-xilinx-standalone/conf/layer.conf	2022-02-06 23:08:05.564072949 -0800
 @@ -15,5 +15,5 @@
  LAYERDEPENDS_xilinx-standalone = "core xilinx"
  LAYERRECOMMENDS_xilinx-standalone = "xilinx-microblaze"

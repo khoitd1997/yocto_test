@@ -1,6 +1,6 @@
 diff -bur '--exclude=.git' /home/kd/yocto_test/third_party_layers/forked_layer/meta-xilinx-tools-xlnx-rel-v2021.2/conf/layer.conf meta-xilinx-tools/conf/layer.conf
---- /home/kd/yocto_test/third_party_layers/forked_layer/meta-xilinx-tools-xlnx-rel-v2021.2/conf/layer.conf	2022-01-26 20:55:01.366923427 -0800
-+++ meta-xilinx-tools/conf/layer.conf	2022-02-06 22:56:29.909237197 -0800
+--- /home/kd/yocto_test/third_party_layers/forked_layer/meta-xilinx-tools-xlnx-rel-v2021.2/conf/layer.conf	2022-02-06 23:02:09.622819206 -0800
++++ meta-xilinx-tools/conf/layer.conf	2022-02-06 23:08:06.968054676 -0800
 @@ -21,4 +21,4 @@
  HOSTTOOLS += "ps"
  INHERIT += "xsct-tarball"
