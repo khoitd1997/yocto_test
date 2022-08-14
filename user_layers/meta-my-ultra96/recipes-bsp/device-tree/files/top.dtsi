@@ -145,3 +145,7 @@
         };
     };
 };
+
+&uart0 {
+    /delete-node/ bluetooth;
+};

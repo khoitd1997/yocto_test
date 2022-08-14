@@ -9,6 +9,8 @@ IMAGE_FSTYPES += "cpio.zst"
 
 IMAGE_INSTALL = "packagegroup-core-boot ${CORE_IMAGE_EXTRA_INSTALL}"
 
+# IMAGE_INSTALL_append = " zeromq zstd "
+
 IMAGE_LINGUAS = " "
 
 LICENSE = "MIT"
