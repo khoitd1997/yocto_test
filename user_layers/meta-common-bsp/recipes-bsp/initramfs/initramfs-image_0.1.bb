@@ -5,7 +5,7 @@ inherit core-image fitImage
 
 SUMMARY = "An initramfs that basically functions as rootfs. This is different from core-image-minimal-initramfs.bb which functions like a traditional ramdisk on Ubuntu that does early boot preparation and then pass it onto the main rootfs."
 
-IMAGE_FSTYPES += "cpio.gz"
+IMAGE_FSTYPES += "cpio.zst"
 
 IMAGE_INSTALL = "packagegroup-core-boot ${CORE_IMAGE_EXTRA_INSTALL}"
 
